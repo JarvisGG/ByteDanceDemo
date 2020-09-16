@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <!-- Divider -->
+    <style name="MUIDivider">
+        <item name="android:background">#EDEEEF</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+
+</resources>

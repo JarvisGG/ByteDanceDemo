@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <!-- Switch 属性 -->
+    <declare-styleable name="MUISwitch">
+        <attr name="coverColor" />
+        <attr name="coverAlpha" />
+    </declare-styleable>
+
+    <style name="MUISwitch">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:checked">false</item>
+    </style>
+
+    <style name="MUISwitch.Default">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="coverAlpha">0.1</item>
+        <item name="coverColor">#FFFFFF</item>
+    </style>
+
+    <!-- RadioButton -->
+    <style name="MUIRadioButton">
+        <item name="android:button">@drawable/radio_default_selector</item>
+    </style>
+
+    <style name="MUIRadioButton.Default">
+        <item name="android:layout_width">18dp</item>
+        <item name="android:layout_height">18dp</item>
+    </style>
+
+    <!-- CheckBox -->
+    <style name="MUICheckBox">
+        <item name="android:button">@drawable/radio_default_selector</item>
+    </style>
+
+    <style name="MUICheckBox.Default">
+        <item name="android:layout_width">18dp</item>
+        <item name="android:layout_height">18dp</item>
+    </style>
+</resources>

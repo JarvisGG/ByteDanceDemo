@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <attr name="mui_backgroundColor" format="color|reference"/>
+    <attr name="mui_borderColor" format="color"/>
+    <attr name="mui_coverColor" format="color"/>
+    <attr name="mui_coverAlpha" format="float|reference"/>
+    <attr name="mui_borderWidth" format="dimension"/>
+    <attr name="mui_iconSrc" format="reference" />
+    <attr name="mui_iconTint" format="color|reference" />
+    <attr name="mui_iconPosition">
+        <flag name="start" value="0x00"/>
+        <flag name="top" value="0x01"/>
+        <flag name="end" value="0x10"/>
+        <flag name="bottom" value="0x11"/>
+    </attr>
+
+    <attr name="mui_isRadiusAdjustBounds" format="boolean"/>
+    <attr name="mui_radius" format="dimension"/>
+    <attr name="mui_radiusTopLeft" format="dimension"/>
+    <attr name="mui_radiusTopRight" format="dimension"/>
+    <attr name="mui_radiusBottomLeft" format="dimension"/>
+    <attr name="mui_radiusBottomRight" format="dimension"/>
+
+    <attr name="mui_general_shadow_elevation" format="dimension" />
+    <attr name="mui_general_shadow_alpha" format="float" />
+
+    <declare-styleable name="SwitchButton" tools:ignore="ResourceName">
+        <attr name="kswThumbDrawable" format="reference"/>
+        <attr name="kswThumbColor" format="color|reference"/>
+        <attr name="kswThumbMargin" format="dimension|reference"/>
+        <attr name="kswThumbMarginTop" format="dimension|reference"/>
+        <attr name="kswThumbMarginBottom" format="dimension|reference"/>
+        <attr name="kswThumbMarginLeft" format="dimension|reference"/>
+        <attr name="kswThumbMarginRight" format="dimension|reference"/>
+        <attr name="kswThumbWidth" format="dimension|reference"/>
+        <attr name="kswThumbHeight" format="dimension|reference"/>
+        <attr name="kswThumbRadius" format="dimension|reference"/>
+        <attr name="kswBackRadius" format="dimension|reference"/>
+        <attr name="kswBackDrawable" format="reference"/>
+        <attr name="kswBackColor" format="color|reference"/>
+        <attr name="kswFadeBack" format="boolean"/>
+        <attr name="kswThumbRangeRatio" format="float"/>
+        <attr name="kswAnimationDuration" format="integer"/>
+        <attr name="kswTintColor" format="color|reference"/>
+        <attr name="kswTextOn" format="string"/>
+        <attr name="kswTextOff" format="string"/>
+        <attr name="kswTextThumbInset" format="dimension"/>
+        <attr name="kswTextExtra" format="dimension"/>
+        <attr name="kswTextAdjust" format="dimension"/>
+    </declare-styleable>
+
+
+
+    <!-- TitleBar -->
+    <declare-styleable name="TitleBar">
+        <attr name="layout_part">
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center_vertical" value="0x10" />
+            <flag name="center_horizontal" value="0x01" />
+            <flag name="center" value="0x11" />
+        </attr>
+        <attr name="textColor" />
+        <attr name="textSize" />
+        <attr name="textTitle" />
+    </declare-styleable>
+
+    <attr name="mui_bottom_sheet_background_dim_amount" format="float" />
+
+
+
+</resources>

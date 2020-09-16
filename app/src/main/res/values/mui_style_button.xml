@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <!-- MUIButton -->
+    <declare-styleable name="MUIButton">
+        <attr name="mui_coverColor"/>
+        <attr name="mui_coverAlpha"/>
+        <attr name="mui_backgroundColor"/>
+        <attr name="mui_borderColor"/>
+        <attr name="mui_borderWidth"/>
+        <attr name="mui_iconSrc"/>
+        <attr name="mui_iconTint"/>
+        <attr name="mui_iconPosition"/>
+        <attr name="mui_isRadiusAdjustBounds"/>
+        <attr name="mui_radius"/>
+        <attr name="mui_radiusTopLeft"/>
+        <attr name="mui_radiusTopRight"/>
+        <attr name="mui_radiusBottomLeft"/>
+        <attr name="mui_radiusBottomRight"/>
+    </declare-styleable>
+
+    <style name="MUIButton" parent="@style/Widget.AppCompat.Button">
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="mui_coverAlpha">0.5</item>
+        <item name="mui_coverColor">#FFFFFF</item>
+        <item name="mui_radius">4dp</item>
+        <item name="mui_borderWidth">1dp</item>
+    </style>
+
+    <style name="MUIButton.Large" parent="MUIButton">
+        <item name="android:layout_width">351dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="MUIButton.Large.Stress" parent="MUIButton.Large">
+        <item name="mui_backgroundColor">@color/mui_button_normal_stress_selector</item>
+        <item name="mui_borderColor">#1966FF</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MUIButton.Large.Default" parent="MUIButton.Large">
+        <item name="mui_backgroundColor">@color/mui_button_normal_default_selector</item>
+        <item name="mui_borderColor">#1966FF</item>
+        <item name="android:textColor">#1966FF</item>
+    </style>
+
+    <style name="MUIButton.Large.Sub" parent="MUIButton.Large">
+        <item name="mui_backgroundColor">@color/mui_button_normal_sub_selector</item>
+        <item name="mui_borderColor">#BF86898C</item>
+        <item name="android:textColor">#5E6166</item>
+    </style>
+
+    <style name="MUIButton.Large.Waring" parent="MUIButton.Large">
+        <item name="mui_backgroundColor">@color/mui_button_normal_waring_selector</item>
+        <item name="mui_borderColor">#BFF24141</item>
+        <item name="android:textColor">#F24141</item>
+    </style>
+
+    <style name="MUIButton.Medium" parent="MUIButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:minWidth">58dp</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="MUIButton.Medium.Stress" parent="MUIButton.Medium">
+        <item name="mui_backgroundColor">@color/mui_button_normal_stress_selector</item>
+        <item name="mui_borderColor">#1966FF</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MUIButton.Medium.Default" parent="MUIButton.Medium">
+        <item name="mui_backgroundColor">@color/mui_button_normal_sub_selector</item>
+        <item name="mui_borderColor">#1966FF</item>
+        <item name="android:textColor">#1966FF</item>
+    </style>
+
+    <style name="MUIButton.Medium.Sub" parent="MUIButton.Medium">
+        <item name="mui_backgroundColor">@color/mui_button_normal_default_selector</item>
+        <item name="mui_borderColor">#BF86898C</item>
+        <item name="android:textColor">#5E6166</item>
+    </style>
+
+    <style name="MUIButton.Medium.Waring" parent="MUIButton.Medium">
+        <item name="mui_backgroundColor">@color/mui_button_normal_waring_selector</item>
+        <item name="mui_borderColor">#BFF24141</item>
+        <item name="android:textColor">#F24141</item>
+    </style>
+
+    <style name="MUIButton.Small" parent="MUIButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:minWidth">50dp</item>
+        <item name="textSize">13sp</item>
+    </style>
+
+    <style name="MUIButton.Small.Stress" parent="MUIButton.Small">
+        <item name="mui_backgroundColor">@color/mui_button_normal_stress_selector</item>
+        <item name="mui_borderColor">#1966FF</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MUIButton.Small.Default" parent="MUIButton.Small">
+        <item name="mui_backgroundColor">@color/mui_button_normal_sub_selector</item>
+        <item name="mui_borderColor">#1966FF</item>
+        <item name="android:textColor">#1966FF</item>
+    </style>
+
+    <style name="MUIButton.Small.Sub" parent="MUIButton.Small">
+        <item name="mui_backgroundColor">@color/mui_button_normal_default_selector</item>
+        <item name="mui_borderColor">#BF86898C</item>
+        <item name="android:textColor">#5E6166</item>
+    </style>
+
+    <style name="MUIButton.Small.Waring" parent="MUIButton.Small">
+        <item name="mui_backgroundColor">@color/mui_button_normal_waring_selector</item>
+        <item name="mui_borderColor">#BFF24141</item>
+        <item name="android:textColor">#F24141</item>
+    </style>
+
+    <style name="MUIButton.Text" parent="MUIButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MUIButton.Text.Stress15" parent="MUIButton.Text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/button_text_stress_color</item>
+    </style>
+
+    <style name="MUIButton.Text.Default15" parent="MUIButton.Text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/button_text_default_color</item>
+    </style>
+
+    <style name="MUIButton.Text.Sub15" parent="MUIButton.Text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/button_text_sub_color</item>
+    </style>
+
+    <style name="MUIButton.Text.Waring15" parent="MUIButton.Text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/button_text_waring_color</item>
+    </style>
+
+    <style name="MUIButton.Text.Stress13" parent="MUIButton.Text">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/button_text_stress_color</item>
+
+    </style>
+
+    <style name="MUIButton.Text.Default13" parent="MUIButton.Text">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/button_text_default_color</item>
+    </style>
+
+    <style name="MUIButton.Text.Sub13" parent="MUIButton.Text">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/button_text_sub_color</item>
+
+    </style>
+
+    <style name="MUIButton.Text.Waring13" parent="MUIButton.Text">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/button_text_waring_color</item>
+    </style>
+
+    <style name="MUIButton.Add" parent="MUIButton">
+        <item name="android:layout_width">18dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:background">@drawable/ic_add_spec_value</item>
+    </style>
+
+    <style name="MUIButton.Delete" parent="MUIButton">
+        <item name="android:layout_width">18dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:background">@drawable/ic_delete_spec_value</item>
+    </style>
+
+</resources>

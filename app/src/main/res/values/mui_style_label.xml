@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <!-- Label -->
+    <style name="MUILabel" parent="MUIButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="MUILabel.Light" parent="MUILabel">
+
+    </style>
+
+    <style name="MUILabel.Dark" parent="MUILabel">
+
+    </style>
+
+    <style name="MUILabel.Light.Yellow" parent="MUILabel.Light">
+        <item name="mui_backgroundColor">#FFEEDE</item>
+        <item name="android:textColor">#FF860D</item>
+    </style>
+
+    <style name="MUILabel.Dark.Yellow" parent="MUILabel.Dark">
+        <item name="mui_backgroundColor">#FF860D</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MUILabel.Light.Green" parent="MUILabel.Light">
+        <item name="mui_backgroundColor">#DDF3DD</item>
+        <item name="android:textColor">#12B312</item>
+    </style>
+
+    <style name="MUILabel.Dark.Green" parent="MUILabel.Dark">
+        <item name="mui_backgroundColor">#12B312</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MUILabel.Light.Red" parent="MUILabel.Light">
+        <item name="mui_backgroundColor">#FFE8E8</item>
+        <item name="android:textColor">#F24141</item>
+    </style>
+
+    <style name="MUILabel.Dark.Red" parent="MUILabel.Dark">
+        <item name="mui_backgroundColor">#F24141</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MUILabel.Light.Gray" parent="MUILabel.Light">
+        <item name="mui_backgroundColor">#EDEEEF</item>
+        <item name="android:textColor">#86898C</item>
+    </style>
+
+    <style name="MUILabel.Dark.Gray" parent="MUILabel.Dark">
+        <item name="mui_backgroundColor">#86898C</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MUILabel.Light.Blue" parent="MUILabel.Light">
+        <item name="mui_backgroundColor">#DAE8FB</item>
+        <item name="android:textColor">#1966FF</item>
+    </style>
+
+    <style name="MUILabel.Dark.Blue" parent="MUILabel.Dark">
+        <item name="mui_backgroundColor">#1966FF</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MUILabel.Corner" parent="MUILabel.Dark">
+        <item name="mui_backgroundColor">#99000000</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+</resources>

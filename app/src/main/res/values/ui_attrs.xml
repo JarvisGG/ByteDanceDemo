@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <attr name="textColor"  format="color|reference" />
+    <attr name="textTitle" format="string|reference" localization="suggested" />
+    <attr name="text" format="string|reference" localization="suggested" />
+    <attr name="textSize" format="dimension|reference" />
+    <attr name="coverAlpha" format="float" />
+    <attr name="coverColor" format="color|reference" />
+
+    <attr name="backgroundColor" format="color"/>
+    <attr name="backgroundSrc" format="reference"/>
+    <attr name="borderColor" format="color"/>
+    <attr name="borderWidth" format="dimension"/>
+
+
+    <declare-styleable name="SwitchBase">
+        <attr name="ms_thumb" format="reference" />
+        <attr name="ms_track" format="reference" />
+        <attr name="ms_switchMinWidth" format="dimension" />
+        <attr name="ms_switchPadding" format="dimension" />
+    </declare-styleable>
+
+
+
+
+
+</resources>

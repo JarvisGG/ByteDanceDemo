@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MUILayout">
+        <attr name="android:maxWidth" />
+        <attr name="android:maxHeight" />
+        <attr name="android:minWidth" />
+        <attr name="android:minHeight" />
+        <attr name="mui_bottomDividerHeight" format="dimension" />
+        <attr name="mui_bottomDividerColor" format="color|reference" />
+        <attr name="mui_bottomDividerInsetLeft" format="dimension" />
+        <attr name="mui_bottomDividerInsetRight" format="dimension" />
+        <attr name="mui_topDividerHeight" format="dimension" />
+        <attr name="mui_topDividerColor" format="color|reference" />
+        <attr name="mui_topDividerInsetLeft" format="dimension" />
+        <attr name="mui_topDividerInsetRight" format="dimension" />
+        <attr name="mui_leftDividerWidth" format="dimension" />
+        <attr name="mui_leftDividerColor" format="color|reference" />
+        <attr name="mui_leftDividerInsetTop" format="dimension" />
+        <attr name="mui_leftDividerInsetBottom" format="dimension" />
+        <attr name="mui_rightDividerWidth" format="dimension" />
+        <attr name="mui_rightDividerColor" format="color|reference" />
+        <attr name="mui_rightDividerInsetTop" format="dimension" />
+        <attr name="mui_rightDividerInsetBottom" format="dimension" />
+        <attr name="mui_radius" />
+        <attr name="mui_borderColor" />
+        <attr name="mui_borderWidth" />
+        <attr name="mui_outerNormalColor" format="color|reference" />
+        <attr name="mui_hideRadiusSide" format="enum">
+            <enum name="none" value="0" />
+            <enum name="top" value="1" />
+            <enum name="right" value="2" />
+            <enum name="bottom" value="3" />
+            <enum name="left" value="4" />
+        </attr>
+        <attr name="mui_showBorderOnlyBeforeL" format="boolean" />
+        <attr name="mui_shadowElevation" format="dimension" />
+        <attr name="mui_useThemeGeneralShadowElevation" format="boolean" />
+        <attr name="mui_shadowAlpha" format="float" />
+        <attr name="mui_outlineInsetTop" format="dimension" />
+        <attr name="mui_outlineInsetLeft" format="dimension" />
+        <attr name="mui_outlineInsetRight" format="dimension" />
+        <attr name="mui_outlineInsetBottom" format="dimension" />
+        <attr name="mui_outlineExcludePadding" format="boolean" />
+    </declare-styleable>
+</resources>

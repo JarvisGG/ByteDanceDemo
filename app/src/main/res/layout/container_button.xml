@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:text="LargeButton" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_large_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:textSize="15sp"
+                android:text="Loading" />
+
+            <TextView
+                android:id="@+id/tv_disable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="8dp"
+                android:textSize="15sp"
+                android:text="Disable" />
+
+        </LinearLayout>
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/large_stress_btn"
+            style="@style/MUIButton.Large.Stress"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:text="Stress" />
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/large_default_btn"
+            style="@style/MUIButton.Large.Default"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:text="Default" />
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/large_sub_btn"
+            style="@style/MUIButton.Large.Sub"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:text="Sub" />
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/large_waring_btn"
+            style="@style/MUIButton.Large.Waring"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:text="Waring" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="MediumButton" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/medium_stress_btn"
+                style="@style/MUIButton.Medium.Stress"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Stress" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/medium_stress_icon_btn"
+                style="@style/MUIButton.Medium.Stress"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                app:mui_iconSrc="@drawable/ic_clear_text"
+                app:mui_iconPosition="start"
+                app:mui_iconTint="@android:color/white"
+                android:text="Stress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/medium_default_btn"
+                style="@style/MUIButton.Medium.Default"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Default" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/medium_default_icon_btn"
+                style="@style/MUIButton.Medium.Default"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                app:mui_iconSrc="@drawable/ic_clear_text"
+                app:mui_iconPosition="bottom"
+                app:mui_iconTint="#1966FF"
+                android:text="Default" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/medium_sub_btn"
+                style="@style/MUIButton.Medium.Sub"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Sub" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/medium_sub_icon_btn"
+                style="@style/MUIButton.Medium.Sub"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                app:mui_iconSrc="@drawable/ic_clear_text"
+                app:mui_iconPosition="top"
+                app:mui_iconTint="#BF86898C"
+                android:text="Sub" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/medium_waring_btn"
+                style="@style/MUIButton.Medium.Waring"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Waring" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/medium_waring_icon_btn"
+                style="@style/MUIButton.Medium.Waring"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                app:mui_iconSrc="@drawable/ic_clear_text"
+                app:mui_iconPosition="end"
+                app:mui_iconTint="#F24141"
+                android:text="Waring" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="SmallButton" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/small_stress_btn"
+                style="@style/MUIButton.Small.Stress"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Stress" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/small_stress_icon_btn"
+                style="@style/MUIButton.Small.Stress"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                app:mui_iconSrc="@drawable/ic_clear_text"
+                app:mui_iconPosition="start"
+                app:mui_iconTint="@android:color/white"
+                android:text="Stress" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="TextButton" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/text_stress13"
+                style="@style/MUIButton.Text.Stress13"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Stress" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/text_stress15"
+                style="@style/MUIButton.Text.Stress15"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                android:text="Stress" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/text_default13"
+                style="@style/MUIButton.Text.Default13"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Default" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/text_default15"
+                style="@style/MUIButton.Text.Default15"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                android:text="Default" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/text_sub13"
+                style="@style/MUIButton.Text.Sub13"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Sub" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/text_sub15"
+                style="@style/MUIButton.Text.Sub15"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                android:text="Sub" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/text_waring13"
+                style="@style/MUIButton.Text.Waring13"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="4dp"
+                android:text="Waring" />
+
+            <bizuikit.components.button.MUIButton
+                android:id="@+id/text_waring15"
+                style="@style/MUIButton.Text.Waring15"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                android:text="Waring" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  左右边距的默认值 12dp  -->
+    <dimen name="default_padding_margin">12dp</dimen>
+    <dimen name="default_padding_margin_left">12dp</dimen>
+    <dimen name="default_padding_margin_right">12dp</dimen>
+
+
+    <dimen name="media_chooser_grid_column_spacing">5dp</dimen>
+    <dimen name="media_chooser_preview_grid_margin">8dp</dimen>
+    <dimen name="media_chooser_preview_grid_padding">5dp</dimen>
+    <dimen name="media_chooser_preview_grid_width">149dp</dimen>
+    <dimen name="media_chooser_preview_grid_spacing">2dp</dimen>
+    <dimen name="selected_image_margin">4dp</dimen>
+
+    <dimen name="base_dialog_radius">4dp</dimen>
+    <dimen name="base_dialog_min_width">283dp</dimen>
+    <dimen name="base_dialog_min_height">120dp</dimen>
+
+    <dimen name="base_dialog_btn_size">15dp</dimen>
+    <dimen name="base_dialog_btn_padding">15dp</dimen>
+    <dimen name="base_dialog_btn_margin">5dp</dimen>
+    <dimen name="base_dialog_btn_layout_lf">5dp</dimen>
+    <dimen name="base_dialog_btn_layout_tb">5dp</dimen>
+
+    <dimen name="base_dialog_msg_size">16dp</dimen>
+
+    <dimen name="toolbar_height">44dp</dimen>
+    <dimen name="toolbar_image_width">50dp</dimen>
+    <dimen name="toolbar_image_height">44dp</dimen>
+    <dimen name="toolbar_image_margin">12dp</dimen>
+    <dimen name="toolbar_text_margin">12dp</dimen>
+    <dimen name="toolbar_shadow_height">1px</dimen>
+    <dimen name="toolbar_text_left_margin">12dp</dimen>
+    <dimen name="toolbar_title_text">17dp</dimen>
+    <dimen name="toolbar_title_max_width">180dp</dimen>
+
+    <dimen name="load_refresh_radius">4dp</dimen>
+    <dimen name="load_refresh_stroke">1dp</dimen>
+    <dimen name="load_refresh_width">230dp</dimen>
+    <dimen name="load_refresh_height">32dp</dimen>
+    <dimen name="load_refresh_text">13dp</dimen>
+    <dimen name="load_refresh_marin_top">12dp</dimen>
+
+    <dimen name="load_error_text">14dp</dimen>
+    <dimen name="load_error_marin_top">11dp</dimen>
+
+    <dimen name="follow_dialog_width">279dp</dimen>
+    <dimen name="follow_dialog_height">260dp</dimen>
+
+
+    <dimen name="text_size_title">20dp</dimen>
+
+</resources>

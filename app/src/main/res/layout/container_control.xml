@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="SwitchButton" />
+
+    <TextView
+        android:id="@+id/tv_disable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_gravity="center_horizontal"
+        android:padding="8dp"
+        android:textSize="15sp"
+        android:text="Disable" />
+
+    <bizuikit.components.control.selection.MUISwitch
+        android:id="@+id/sv_1"
+        style="@style/MUISwitch.Default"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        app:kswBackColor="@color/switch_default_color"
+        app:kswThumbColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="4dp"
+        android:text="RadioGroup" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <bizuikit.components.control.selection.MUIRadioButton
+            android:id="@+id/rb_1"
+            style="@style/MUIRadioButton.Default"
+            android:layout_margin="10dp" />
+
+        <bizuikit.components.control.selection.MUIRadioButton
+            android:id="@+id/rb_2"
+            style="@style/MUIRadioButton.Default"
+            android:layout_margin="10dp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="4dp"
+        android:text="CheckBox" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <bizuikit.components.control.selection.MUICheckBox
+            android:id="@+id/rb_3"
+            style="@style/MUICheckBox.Default"
+            android:layout_margin="10dp" />
+
+        <bizuikit.components.control.selection.MUICheckBox
+            android:id="@+id/rb_4"
+            style="@style/MUICheckBox.Default"
+            android:layout_margin="10dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="4dp"
+        android:text="Add/Delete" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <bizuikit.components.button.MUIButton
+            style="@style/MUIButton.Add"
+            android:layout_margin="10dp"/>
+
+        <bizuikit.components.button.MUIButton
+            style="@style/MUIButton.Delete"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="4dp"
+        android:text="Counter" />
+
+</LinearLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="Label" />
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Light.Green"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Dark.Green"
+            android:layout_margin="10dp"
+            app:mui_radius="2dp"
+            android:text="Label" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Light.Red"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Dark.Red"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Light.Yellow"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Dark.Yellow"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Light.Gray"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Dark.Gray"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Light.Blue"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+        <bizuikit.components.label.MUILabel
+            style="@style/MUILabel.Dark.Blue"
+            app:mui_radius="2dp"
+            android:layout_margin="10dp"
+            android:text="Label" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="Corner" />
+
+    <bizuikit.components.label.MUILabel
+        style="@style/MUILabel.Light.Blue"
+        android:layout_gravity="center_horizontal"
+        app:mui_radiusTopRight="2dp"
+        app:mui_radiusBottomLeft="2dp"
+        android:layout_marginTop="10dp"
+        android:text="Label" />
+
+    <bizuikit.components.label.MUILabel
+        style="@style/MUILabel.Corner"
+        android:layout_gravity="center_horizontal"
+        app:mui_radiusTopLeft="2dp"
+        app:mui_radiusBottomRight="2dp"
+        android:layout_marginTop="10dp"
+        android:text="Label" />
+
+
+</LinearLayout>

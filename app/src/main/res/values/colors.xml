@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+        <color name="bg_status_bar">#dddddd</color>
+        <color name="title_bar_bg_day">#ffffff</color>
+        <color name="title_bar_bg_night">#888888</color>
+        <!--  设计规范颜色  开始 -->
+
+        <!--  默认的页面背景色  -->
+        <color name="window_background">@color/color_F5F6F7</color>
+
+        <!--  默认的分割线颜色  -->
+        <color name="default_divide_line_color">@color/color_EDEEEF</color>
+
+        <!--主品牌色-->
+        <color name="main_brand_color">@color/color_1966FF</color>
+        <color name="main_brand_color2">@color/color_A3C5FF</color>
+        <color name="main_brand_color3">@color/color_DAE8FB</color>
+
+        <!--主文字颜色-->
+        <color name="main_text_color">@color/text_color_25292E</color>
+        <color name="main_text_color2">@color/text_color_5E6166</color>
+        <color name="main_text_color3">@color/text_color_86898C</color>
+        <color name="main_text_color4">@color/text_color_A9ABAD</color>
+        <color name="main_text_color5">@color/text_color_CACBCC</color>
+
+        <!--  设计规范颜色  以上 -->
+
+        <color name="c1">#FF6F59</color>
+        <color name="c2">#1C1C1C</color>
+        <color name="c3">#404040</color>
+        <color name="c4">#999999</color>
+        <color name="c5">#EEEEEE</color>
+        <color name="c6">#F4F4F4</color>
+        <color name="c7">#FFFFFF</color>
+        <color name="c8">#1A000000</color>
+        <color name="c9">#4D000000</color>
+        <color name="c10">#99000000</color>
+        <color name="c11">#E6000000</color>
+        <color name="c12">#99FFFFFF</color>
+        <color name="gray_33">#FF333333</color>
+        <color name="gray_e8">#FFe8e8e8</color>
+        <color name="gray_e9">#FFe9e9e9</color>
+        <color name="gray_99">#FF999999</color>
+        <color name="gray_fb">#FFfbfbfb</color>
+        <color name="gray_fa">#FFfafafa</color>
+        <color name="gray_50">#FF505050</color>
+        <color name="gray_ca">#FFcacaca</color>
+        <color name="gray_63">#FFFFA563</color>
+        <color name="gray_64">#FF646464</color>
+        <color name="gray_bd">#BDBDBD</color>
+
+
+        <color name="orange_fa704a">#fa704a</color>
+        <color name="orange_fff9f9">#FFF9F9</color>
+        <color name="grey_f4f5f6">#F4F5F6</color>
+
+        <color name="color_EDEEEF">#EDEEEF</color>
+        <color name="color_1966FF">#1966FF</color>
+        <color name="color_A3C5FF">#A3C5FF</color>
+        <color name="color_DAE8FB">#DAE8FB</color>
+        <color name="color_F6F7F8">#FFF6F7F8</color>
+        <color name="color_1A66FF">#FF1A66FF</color>
+        <color name="color_FDE6E6">#FDE6E6</color>
+        <color name="color_F5F6F7">#FFF5F6F7</color>
+        <color name="color_white">#FFFFFF</color>
+        <color name="color_transparent">#FFFFFFFF</color>
+
+        <!--不可点 文字颜色-->
+        <color name="text_color_not_able">@color/gray_ca</color>
+        <!--可点 的 文字颜色-->
+        <color name="text_color_enable">@color/gray_33</color>
+
+        <color name="text_color_86898C">#86898C</color>
+        <color name="text_color_25292E">#25292E</color>
+        <color name="text_color_262626">#262626</color>
+        <color name="text_color_FA830C">#FA830C</color>
+        <color name="text_color_5E6166">#5E6166</color>
+        <color name="text_color_12B312">#12B312</color>
+        <color name="text_color_333333">#333333</color>
+        <color name="text_color_f24444">#f24444</color>
+        <color name="text_color_f24141">#f24141</color>
+        <color name="text_color_878A8F">#878A8F</color>
+        <color name="text_color_A9ABAD">#A9ABAD</color>
+        <color name="text_color_CACBCC">#CACBCC</color>
+        <color name="text_color_F5F6F7">#F5F6F7</color>
+
+        <color name="ec_color_promotion_price">#FFFA704A</color>
+
+        <color name="dialog_title">#FF0D112F</color>
+        <color name="dialog_msg">#FF707284</color>
+
+        <color name="toolbar_shadow_line_color">@color/gray_e8</color>
+        <color name="toolbar_title_text_color">#25292E</color>
+        <color name="toolbar_bg">@color/window_background</color>
+
+        <color name="load_refresh_stroke">@color/gray_e9</color>
+        <color name="load_refresh_text">@color/main_brand_color</color>
+
+        <color name="load_error_text">#FF999999</color>
+
+        <color name="feedui_cell_recommend">#99111027</color>
+
+        <color name="default_image_bg_color">#FFF5F5F5</color>
+
+        <color name="default_image_bg_color_new">#fff2f2f2</color>
+
+        <color name="default_image_bg_color_publish">#FFFFFFFF</color>
+
+        <color name="default_search_view_text_color">#737373</color>
+
+
+        <!--不透明度	16进制值-->
+        <!--100% FF-->
+        <!--95%	F2-->
+        <!--90%	E6-->
+        <!--85%	D9-->
+        <!--80%	CC-->
+        <!--75%	BF-->
+        <!--70%	B3-->
+        <!--65%	A6-->
+        <!--60%	99-->
+        <!--55%	8C-->
+        <!--50%	80-->
+        <!--45%	73-->
+        <!--40%	66-->
+        <!--35%	59-->
+        <!--30%	4D-->
+        <!--25%	40-->
+        <!--20%	33-->
+        <!--15%	26-->
+        <!--10%	1A-->
+        <!--5%	0D-->
+        <!--0%	00-->
+
+        <!--    100% — FF-->
+        <!--    99% — FC-->
+        <!--    98% — FA-->
+        <!--    97% — F7-->
+        <!--    96% — F5-->
+        <!--    95% — F2-->
+        <!--    94% — F0-->
+        <!--    93% — ED-->
+        <!--    92% — EB-->
+        <!--    91% — E8-->
+        <!--    90% — E6-->
+        <!--    89% — E3-->
+        <!--    88% — E0-->
+        <!--    87% — DE-->
+        <!--    86% — DB-->
+        <!--    85% — D9-->
+        <!--    84% — D6-->
+        <!--    83% — D4-->
+        <!--    82% — D1-->
+        <!--    81% — CF-->
+        <!--    80% — CC-->
+        <!--    79% — C9-->
+        <!--    78% — C7-->
+        <!--    77% — C4-->
+        <!--    76% — C2-->
+        <!--    75% — BF-->
+        <!--    74% — BD-->
+        <!--    73% — BA-->
+        <!--    72% — B8-->
+        <!--    71% — B5-->
+        <!--    70% — B3-->
+        <!--    69% — B0-->
+        <!--    68% — AD-->
+        <!--    67% — AB-->
+        <!--    66% — A8-->
+        <!--    65% — A6-->
+        <!--    64% — A3-->
+        <!--    63% — A1-->
+        <!--    62% — 9E-->
+        <!--    61% — 9C-->
+        <!--    60% — 99-->
+        <!--    59% — 96-->
+        <!--    58% — 94-->
+        <!--    57% — 91-->
+        <!--    56% — 8F-->
+        <!--    55% — 8C-->
+        <!--    54% — 8A-->
+        <!--    53% — 87-->
+        <!--    52% — 85-->
+        <!--    51% — 82-->
+        <!--    50% — 80-->
+        <!--    49% — 7D-->
+        <!--    48% — 7A-->
+        <!--    47% — 78-->
+        <!--    46% — 75-->
+        <!--    45% — 73-->
+        <!--    44% — 70-->
+        <!--    43% — 6E-->
+        <!--    42% — 6B-->
+        <!--    41% — 69-->
+        <!--    40% — 66-->
+        <!--    39% — 63-->
+        <!--    38% — 61-->
+        <!--    37% — 5E-->
+        <!--    36% — 5C-->
+        <!--    35% — 59-->
+        <!--    34% — 57-->
+        <!--    33% — 54-->
+        <!--    32% — 52-->
+        <!--    31% — 4F-->
+        <!--    30% — 4D-->
+        <!--    29% — 4A-->
+        <!--    28% — 47-->
+        <!--    27% — 45-->
+        <!--    26% — 42-->
+        <!--    25% — 40-->
+        <!--    24% — 3D-->
+        <!--    23% — 3B-->
+        <!--    22% — 38-->
+        <!--    21% — 36-->
+        <!--    20% — 33-->
+        <!--    19% — 30-->
+        <!--    18% — 2E-->
+        <!--    17% — 2B-->
+        <!--    16% — 29-->
+        <!--    15% — 26-->
+        <!--    14% — 24-->
+        <!--    13% — 21-->
+        <!--    12% — 1F-->
+        <!--    11% — 1C-->
+        <!--    10% — 1A-->
+        <!--    9% — 17-->
+        <!--    8% — 14-->
+        <!--    7% — 12-->
+        <!--    6% — 0F-->
+        <!--    5% — 0D-->
+        <!--    4% — 0A-->
+        <!--    3% — 08-->
+        <!--    2% — 05-->
+        <!--    1% — 03-->
+        <!--    0% — 00-->
+
+    <color name="product_color_main_blue">#1966FF</color>
+    <color name="product_color_main_black">#25292E</color>
+    <color name="product_color_F5F6F7">#F5F6F7</color>
+    <color name="product_color_E5E5E5">#E5E5E5</color>
+    <color name="product_color_A9ABAD">#A9ABAD</color>
+    <color name="product_color_FF860D">#FF860D</color>
+    <color name="product_color_1A66FF">#1A66FF</color>
+
+    <color name="product_color_05000000">#05000000</color>
+    <color name="product_color_801966FF">#801966FF</color>
+</resources>
