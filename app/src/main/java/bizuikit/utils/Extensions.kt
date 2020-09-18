@@ -1,6 +1,9 @@
 package bizuikit.utils
 
+import android.app.Activity
+import android.content.Context
 import android.content.res.Resources
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,5 +37,14 @@ val Number.px2sp @JvmName("px2sp") get() = round(toFloat() / Resources.getSystem
 
 inline fun <reified T : View> ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): T {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot) as T
+}
+
+fun Activity.getToolBarHeight(): Int {
+    val tv = TypedValue()
+    var actionBarHeight = 0
+    if (this.theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+        actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, this.resources.displayMetrics)
+    }
+    return actionBarHeight
 }
 

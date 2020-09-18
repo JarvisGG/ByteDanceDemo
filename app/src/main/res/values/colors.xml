@@ -68,8 +68,10 @@
         <color name="color_F5F6F7">#FFF5F6F7</color>
         <color name="color_white">#FFFFFF</color>
         <color name="color_transparent">#FFFFFFFF</color>
+    <color name="mui_config_color_transparent">#00000000</color>
 
-        <!--不可点 文字颜色-->
+
+    <!--不可点 文字颜色-->
         <color name="text_color_not_able">@color/gray_ca</color>
         <!--可点 的 文字颜色-->
         <color name="text_color_enable">@color/gray_33</color>

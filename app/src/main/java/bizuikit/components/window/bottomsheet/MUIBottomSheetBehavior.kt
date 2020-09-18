@@ -1,4 +1,4 @@
-package bizuikit.components.dialog.bottomsheet
+package bizuikit.components.window.bottomsheet
 
 import android.view.MotionEvent
 import android.view.ViewGroup

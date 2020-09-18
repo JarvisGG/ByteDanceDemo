@@ -17,7 +17,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/ml_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -36,8 +36,8 @@
             android:soundEffectsEnabled="false"
             tools:ignore="UnusedAttribute"/>
 
-        <FrameLayout
-            android:id="@+id/bottom_sheet"
+        <bizuikit.components.layout.MUILayout
+            android:id="@+id/ml_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"/>

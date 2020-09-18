@@ -1,4 +1,4 @@
-package bizuikit.components
+package bizuikit
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

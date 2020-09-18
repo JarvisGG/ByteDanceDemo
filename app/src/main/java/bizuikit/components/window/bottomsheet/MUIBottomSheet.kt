@@ -1,15 +1,17 @@
-package bizuikit.components.dialog.bottomsheet
+package bizuikit.components.window.bottomsheet
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
-import bizuikit.components.dialog.MUIBaseDialog
+import bizuikit.components.common.IMUIShapeLayout
+import bizuikit.components.window.MUIBaseDialog
+import bizuikit.components.layout.MUILayout
 import com.example.bytedancedemo.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
@@ -19,11 +21,13 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCa
  * @date: 2020/9/16
  * @desc:
  */
-class MUIBottomSheet : MUIBaseDialog {
+class MUIBottomSheet : MUIBaseDialog, IMUIShapeLayout {
 
-    private var behavior: MUIBottomSheetBehavior<ViewGroup> = MUIBottomSheetBehavior()
+    private var behavior: MUIBottomSheetBehavior<out MUILayout> = MUIBottomSheetBehavior()
 
-    private var rootView: ViewGroup
+    private var root: FrameLayout
+
+    private var container: MUILayout
 
     private var animateToCancel = false
 
@@ -35,6 +39,7 @@ class MUIBottomSheet : MUIBaseDialog {
 
     @SuppressLint("ClickableViewAccessibility")
     constructor(context: Context, style: Int) : super(context, style) {
+
         behavior.isHideable = true
         behavior.addBottomSheetCallback(object : BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -59,13 +64,13 @@ class MUIBottomSheet : MUIBaseDialog {
         behavior.allowDrag = false
         behavior.skipCollapsed = true
 
-        val container = layoutInflater.inflate(R.layout.mui_bottom_sheet_dialog, null) as ViewGroup
+        root = layoutInflater.inflate(R.layout.mui_bottom_sheet, null, false) as FrameLayout
 
-        rootView = container.findViewById(R.id.bottom_sheet)
-        val rootViewLp = rootView.layoutParams as CoordinatorLayout.LayoutParams
-        rootViewLp.behavior = behavior
+        container = root.findViewById(R.id.ml_container)
+        val containerLp = container.layoutParams as CoordinatorLayout.LayoutParams
+        containerLp.behavior = behavior
 
-        container.findViewById<View>(R.id.touch_outside)
+        root.findViewById<View>(R.id.touch_outside)
             .setOnClickListener(
                 View.OnClickListener {
                     if (behavior.state == BottomSheetBehavior.STATE_SETTLING) {
@@ -75,13 +80,9 @@ class MUIBottomSheet : MUIBaseDialog {
                         cancel()
                     }
                 })
-        rootView.setOnTouchListener { _, _ -> true }
+        root.setOnTouchListener { _, _ -> true }
 
-        super.setContentView(
-            container, ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
-            )
-        )
+        super.setContentView(root, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
     }
 
     fun onSetCancelable(cancelable: Boolean) {
@@ -99,7 +100,7 @@ class MUIBottomSheet : MUIBaseDialog {
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
         }
-        ViewCompat.requestApplyInsets(rootView)
+        ViewCompat.requestApplyInsets(container)
     }
 
     override fun onStart() {
@@ -112,7 +113,7 @@ class MUIBottomSheet : MUIBaseDialog {
     override fun show() {
         super.show()
         if (behavior.state != BottomSheetBehavior.STATE_EXPANDED) {
-            rootView.postOnAnimation { behavior.setState(BottomSheetBehavior.STATE_EXPANDED) }
+            container.postOnAnimation { behavior.setState(BottomSheetBehavior.STATE_EXPANDED) }
         }
         animateToCancel = false
         animateToDismiss = false
@@ -139,21 +140,60 @@ class MUIBottomSheet : MUIBaseDialog {
     }
 
     fun getRootView(): ViewGroup {
-        return rootView
+        return container
     }
 
-    fun getBehavior(): MUIBottomSheetBehavior<ViewGroup> {
+    fun getBehavior(): MUIBottomSheetBehavior<out MUILayout> {
         return behavior
     }
 
-    fun addContainer(view: View?, lp: ViewGroup.LayoutParams = ViewGroup.LayoutParams(
+    fun addView(view: View?, lp: ViewGroup.LayoutParams = ViewGroup.LayoutParams(
         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
     )) {
-        rootView.addView(view, lp)
+        container.addView(view, lp)
     }
 
-    fun addContainer(layoutResId: Int) {
-        LayoutInflater.from(rootView.context).inflate(layoutResId, rootView, true)
+    override fun setRadiusAndShadow(radius: Int, shadowElevation: Int, shadowAlpha: Float) {
+        container.setRadiusAndShadow(radius, shadowElevation, shadowAlpha)
+    }
+
+    override fun setRadiusAndShadow(
+        radius: Int,
+        hideRadiusSide: Int,
+        shadowElevation: Int,
+        shadowAlpha: Float
+    ) {
+        container.setRadiusAndShadow(radius, hideRadiusSide, shadowElevation, shadowAlpha)
+    }
+
+    override fun setRadiusAndShadow(
+        radius: Int,
+        hideRadiusSide: Int,
+        shadowElevation: Int,
+        shadowColor: Int,
+        shadowAlpha: Float
+    ) {
+        container.setRadiusAndShadow(radius, hideRadiusSide, shadowElevation, shadowColor, shadowAlpha)
+    }
+
+    override fun setShadowElevation(elevation: Int) {
+        container.setShadowElevation(elevation)
+    }
+
+    override fun setShadowAlpha(shadowAlpha: Float) {
+        container.setShadowAlpha(shadowAlpha)
+    }
+
+    override fun setShadowColor(shadowColor: Int) {
+        container.setShadowColor(shadowColor)
+    }
+
+    override fun setRadius(radius: Int) {
+        container.setRadius(radius)
+    }
+
+    override fun setRadius(radius: Int, hideRadiusSide: Int) {
+        container.setRadius(radius, hideRadiusSide)
     }
 
 

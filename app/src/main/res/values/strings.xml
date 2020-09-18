@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ByteDanceDemo</string>
+    <string name="button_start_now">确定</string>
+    <string name="button_end_now">取消</string>
+    <string name="button_konw">知道了</string>
 </resources>

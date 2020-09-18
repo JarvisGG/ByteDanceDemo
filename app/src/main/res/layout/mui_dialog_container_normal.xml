@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="这里是标题"
+        android:textSize="17sp"
+        android:textColor="#25292E"
+        android:lineSpacingExtra="0sp"
+        android:translationY="-0.1sp"
+        android:paddingBottom="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_horizontal|top" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxHeight="208dp"
+            android:scrollbars = "vertical"
+            android:lineSpacingExtra="1sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#5E6166"
+            tools:text = "电商团队Flutter通用UI组件库
+背景
+当前公司内部Flutter建设已趋于完善，使用Flutter技术能够在动态化方面媲美h5而性能、体验方面匹及native。电商各业务也都有一定程度的需求接入Flutter技术，为避免重复造轮子、提高业务开发效率。故在此倡导共建一个电商团队的Flutter通用ui组件库。
+
+各位可以将认为可以作为通用组件功能填写到下方的表格中，我们会评估通用性后在接下来的迭代中逐渐添加。一期会先将电商团队内部沉淀的Flutter通用UI库整合进该组件中。接下来的组件由各团队业务开发中逐渐完善、共同维护。
+
+共建通用UI组件库的意义
+1. 大大降低初期业务开发的成本
+2. 减轻新业务接入Flutter的基建工作
+3. 已有ui组件经过其他团队线上验证，质量有保证
+4. 同个部门，有问题能够直接找到对应同学面对面交流
+5. 公司内部组件，环境配置等更接地气
+为何不使用西瓜、火山等部门的现有组件？
+- 电商业务ui风格和设计与其他团队可能存在较大出入
+- 电商业务往往依附于其他业务某个模块，需要多套ui主题适配，现有西瓜火山基础库不会适配其他业务线ui
+- 沟通成本较大
+- 跨部门参与共同维护的成本较大"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/v_gradient"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/mui_divider_dialog_message"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="若需要，这里是辅助文字"
+        android:textSize="11sp"
+        android:textColor="#86898C"
+        android:layout_marginTop="4dp"
+        android:lineSpacingExtra="0sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
+
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        style="@style/MUIDivider.Horizontal" />
+
+    <bizuikit.components.button.MUIButton
+        android:id="@+id/mb_single"
+        style="@style/MUIButton.Normal"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:textColor="#1966FF"
+        android:textStyle="bold"
+        app:mui_radiusBottomLeft="6dp"
+        app:mui_radiusBottomRight="6dp"
+        tools:text="知道了" />
+
+    <LinearLayout
+        android:id="@+id/ll_group"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:orientation="horizontal">
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/mb_negative"
+            style="@style/MUIButton.Normal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="52dp"
+            android:textColor="#86898C"
+            android:textStyle="bold"
+            app:mui_radiusBottomLeft="6dp"
+            tools:text="取消" />
+
+        <View
+            style="@style/MUIDivider.Vertical"
+            android:layout_height="match_parent"/>
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/mb_positive"
+            style="@style/MUIButton.Normal"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:textColor="#1966FF"
+            android:textStyle="bold"
+            app:mui_radiusBottomRight="6dp"
+            tools:text="确定" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

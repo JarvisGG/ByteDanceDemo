@@ -1,4 +1,4 @@
-package bizuikit.components.dialog
+package bizuikit.components.window
 
 import android.R
 import android.content.Context

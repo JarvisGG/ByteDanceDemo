@@ -13,4 +13,12 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
+    <style name="MUIBaseDialog.Dialog" parent="MUIBaseDialog">
+        <item name="android:backgroundDimAmount">?attr/mui_bottom_sheet_background_dim_amount</item>
+        <item name="android:windowBackground">@color/mui_config_color_transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item><!-- 在中间弹框、背后有遮罩的效果 -->
+    </style>
+
 </resources>

@@ -10,12 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
-import bizuikit.components.bar.TitleBar.LayoutParams.Companion.CENTER
-import bizuikit.components.bar.TitleBar.LayoutParams.Companion.HORIZONTAL_GRAVITY_MASK
-import bizuikit.components.bar.TitleBar.LayoutParams.Companion.LEFT
-import bizuikit.components.bar.TitleBar.LayoutParams.Companion.RIGHT
-import bizuikit.components.bar.TitleBar.LayoutParams.Companion.UNSPECIFIED_PAIR
-import bizuikit.components.bar.TitleBar.LayoutParams.Companion.getAbsolutePart
+import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.CENTER
+import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.HORIZONTAL_GRAVITY_MASK
+import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.LEFT
+import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.RIGHT
+import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.UNSPECIFIED_PAIR
+import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.getAbsolutePart
 import com.example.bytedancedemo.R
 import bizuikit.utils.sp2px
 import java.util.*
@@ -41,24 +41,23 @@ app:layout_part="right" />
 
 </bizuikit.components.bar.TitleBar>
  */
-class TitleBar : ViewGroup {
+class MUITitleBar : ViewGroup {
+    private val paint by lazy { Paint(Paint.ANTI_ALIAS_FLAG) }
 
-    private var title = ""
+    var title = ""
         set(value) {
             field = value
             invalidate()
         }
 
-    private val paint by lazy { Paint(Paint.ANTI_ALIAS_FLAG) }
-
-    private var textColor = Color.DKGRAY
+    var textColor = Color.DKGRAY
         set(value) {
             field = value
             paint.color = value
             invalidate()
         }
 
-    private var textSize = 0f
+    var textSize = 15f.sp2px
         set(value) {
             field = value
             paint.textSize = value
@@ -86,10 +85,10 @@ class TitleBar : ViewGroup {
         if (attrs == null) {
             return
         }
-        context.obtainStyledAttributes(attrs, R.styleable.TitleBar).run {
-            textColor = getColor(R.styleable.TitleBar_textColor, Color.DKGRAY)
-            textSize = getDimension(R.styleable.TitleBar_textSize, 15f.sp2px)
-            title = getText(R.styleable.TitleBar_textTitle).toString()
+        context.obtainStyledAttributes(attrs, R.styleable.MUITitleBar).run {
+            textColor = getColor(R.styleable.MUITitleBar_mui_textColor, Color.DKGRAY)
+            textSize = getDimension(R.styleable.MUITitleBar_mui_textSize, 15f.sp2px)
+            title = getText(R.styleable.MUITitleBar_mui_textTitle).toString()
             recycle()
         }
     }
@@ -266,8 +265,8 @@ class TitleBar : ViewGroup {
         var part = UNSPECIFIED_PAIR
         @SuppressLint("CustomViewStyleable")
         constructor(@NonNull c: Context, @Nullable attrs: AttributeSet?) : super(c, attrs) {
-            val a = c.obtainStyledAttributes(attrs, R.styleable.TitleBar)
-            part = a.getInt(R.styleable.TitleBar_layout_part, UNSPECIFIED_PAIR)
+            val a = c.obtainStyledAttributes(attrs, R.styleable.MUITitleBar)
+            part = a.getInt(R.styleable.MUITitleBar_mui_layout_part, UNSPECIFIED_PAIR)
             a.recycle()
         }
         constructor(width: Int, height: Int) : super(width, height)

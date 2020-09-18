@@ -2,6 +2,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="ResourceName">
 
+    <attr name="mui_textColor"  format="color|reference" />
+    <attr name="mui_textTitle" format="string|reference" localization="suggested" />
+    <attr name="mui_text" format="string|reference" localization="suggested" />
+    <attr name="mui_textSize" format="dimension|reference" />
+
     <attr name="mui_backgroundColor" format="color|reference"/>
     <attr name="mui_borderColor" format="color"/>
     <attr name="mui_coverColor" format="color"/>
@@ -54,17 +59,17 @@
 
 
     <!-- TitleBar -->
-    <declare-styleable name="TitleBar">
-        <attr name="layout_part">
+    <declare-styleable name="MUITitleBar">
+        <attr name="mui_layout_part">
             <flag name="left" value="0x03" />
             <flag name="right" value="0x05" />
             <flag name="center_vertical" value="0x10" />
             <flag name="center_horizontal" value="0x01" />
             <flag name="center" value="0x11" />
         </attr>
-        <attr name="textColor" />
-        <attr name="textSize" />
-        <attr name="textTitle" />
+        <attr name="mui_textColor" />
+        <attr name="mui_textSize" />
+        <attr name="mui_textTitle" />
     </declare-styleable>
 
     <attr name="mui_bottom_sheet_background_dim_amount" format="float" />

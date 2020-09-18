@@ -9,12 +9,12 @@
     <View
         android:layout_width="match_parent"
         android:layout_marginTop="40dp"
-        style="@style/MUIDivider" />
+        style="@style/MUIDivider.Horizontal" />
 
     <View
         android:layout_width="match_parent"
         android:layout_marginTop="40dp"
         android:layout_marginStart="100dp"
-        style="@style/MUIDivider" />
+        style="@style/MUIDivider.Horizontal" />
 
 </LinearLayout>
