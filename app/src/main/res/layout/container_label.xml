@@ -20,6 +20,9 @@
         android:orientation="horizontal">
 
         <bizuikit.components.label.MUILabel
+
+
+
             style="@style/MUILabel.Light.Green"
             app:mui_radius="2dp"
             android:layout_margin="10dp"
