@@ -35,6 +35,18 @@ val Number.px2dp @JvmName("px2dp") get() = round(toFloat() / Resources.getSystem
  */
 val Number.px2sp @JvmName("px2sp") get() = round(toFloat() / Resources.getSystem().displayMetrics.scaledDensity)
 
+/**
+ * 获得屏幕高度
+ */
+fun Context.screenHeight() = this.resources.displayMetrics.heightPixels
+
+/**
+ * 获得屏幕宽度
+ */
+fun Context.screenWidth() = this.resources.displayMetrics.widthPixels
+
+
+
 inline fun <reified T : View> ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): T {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot) as T
 }

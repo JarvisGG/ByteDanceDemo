@@ -27,7 +27,7 @@ class MUIBottomSheet : MUIBaseDialog, IMUIShapeLayout {
 
     private var root: FrameLayout
 
-    private var container: MUILayout
+    var container: MUILayout
 
     private var animateToCancel = false
 

@@ -20,25 +20,15 @@ open class MUIBottomSheetBuilder(
     private val activity: Activity
 ) {
 
-    private lateinit var bottomSheet: MUIBottomSheet
-
-    private var title: String = ""
+    open lateinit var bottomSheet: MUIBottomSheet
 
     private var radius: Int = 0
     private var shadowElevation = 0
     private var shadowAlpha = 0f
     private var shadowColor = Color.BLACK
 
-    private var container: View? = null
-    private var containerId = -1
-
-    /**
-     * 标题
-     */
-    fun setTitle(title: String): MUIBottomSheetBuilder {
-        this.title = title
-        return this
-    }
+    open var container: LinearLayout? = null
+    open var containerId = -1
 
     /**
      * 弹窗圆角
@@ -73,7 +63,7 @@ open class MUIBottomSheetBuilder(
     }
 
     fun setContainer(
-        container: View, lp: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+        container: LinearLayout, lp: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
@@ -101,7 +91,8 @@ open class MUIBottomSheetBuilder(
 
     fun build(defStyle: Int): MUIBottomSheet {
         bottomSheet = MUIBottomSheet(activity, defStyle)
-        bottomSheet.addView(buildContainer())
+        container = bottomSheet.container.inflate(containerId, attachToRoot = true)
+        buildContainer()
         bottomSheet.setRadius(radius)
         bottomSheet.setShadowElevation(shadowElevation)
         bottomSheet.setShadowAlpha(shadowAlpha)
@@ -109,41 +100,11 @@ open class MUIBottomSheetBuilder(
         return bottomSheet
     }
 
-    open fun buildContainer() : View {
-        val root = LinearLayout(activity)
-        root.orientation = LinearLayout.VERTICAL
-        addTitle(root)
-        addContainer(root)
-        return root
+    open fun buildContainer() : LinearLayout {
+        addContainer(container)
+        return container!!
     }
 
-    /**
-     * 添加标题
-     */
-    open fun addTitle(root: LinearLayout) {
-        if (!TextUtils.isEmpty(title)) {
-            val titleBar = MUITitleBar(activity)
-            titleBar.title = title
-            titleBar.setBackgroundColor(Color.WHITE)
-            root.addView(titleBar, LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                activity.getToolBarHeight())
-            )
-            titleBar.textSize = 15.sp2px
-
-        }
-    }
-
-    /**
-     * 添加 Container
-     */
-    open fun addContainer(root: LinearLayout) {
-        if (container != null) {
-            root.addView(container)
-        } else if (containerId != -1) {
-            container = root.inflate(containerId)
-            root.addView(container)
-        }
-    }
+    open fun addContainer(root: LinearLayout?) {}
 
 }

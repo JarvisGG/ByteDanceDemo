@@ -4,18 +4,17 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import bizuikit.ComponentDepend
 import bizuikit.InnerHolder
-import bizuikit.components.window.bottomsheet.MUIBottomSheetBuilder
+import bizuikit.components.window.bottomsheet.ISelectItem
+import bizuikit.components.window.bottomsheet.MUIBottomSheetSelectedBuilder
 import bizuikit.components.window.dialog.MUIDialog
 import bizuikit.components.window.dialog.MUIDialogNormalBuilder
 import bizuikit.components.window.toast.showIconToast
 import bizuikit.components.window.toast.showToast
-import bizuikit.utils.dp2px
 import com.example.bytedancedemo.R
 import me.drakeet.multitype.ItemViewBinder
 import me.drakeet.multitype.MultiTypeAdapter
@@ -51,7 +50,7 @@ class DialogComponentDepend : ComponentDepend(), View.OnClickListener {
                 holder.itemView.findViewById<TextView>(R.id.tv_name).text = item.name
                 holder.itemView.setOnClickListener {
                     when (item.type) {
-                        1 -> showBottomSheet(activity)
+                        1 -> showBottomSheet(activity, item.type)
                         2 -> showToast(activity, item.name)
                         3 -> showIconToast(activity, item.name, R.drawable.icon_toast_success)
                         4, 5, 6, 7, 8, 9 -> showDialog(activity, item.type)
@@ -61,7 +60,7 @@ class DialogComponentDepend : ComponentDepend(), View.OnClickListener {
             }
         })
         adapter.setItems(arrayListOf(
-            InnerData("Bottom Sheet", 1),
+            InnerData("单选 Bottom Sheet", 1),
             InnerData("文字 Toast", 2),
             InnerData("图片 Toast", 3),
             InnerData("普通 Dialog", 4),
@@ -167,56 +166,31 @@ class DialogComponentDepend : ComponentDepend(), View.OnClickListener {
         dialog?.show()
     }
 
-    fun showBottomSheet(activity: Activity) {
-        val demoView = RecyclerView(activity)
-        val adapter = MultiTypeAdapter()
-        adapter.register(InnerData::class.java, object : ItemViewBinder<InnerData, InnerHolder>() {
-            override fun onCreateViewHolder(
-                inflater: LayoutInflater,
-                parent: ViewGroup
-            ) = InnerHolder(
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_component, parent, false)
-            )
-
-            override fun onBindViewHolder(
-                holder: InnerHolder,
-                item: InnerData,
-                position: Int,
-                itemSize: Int
-            ) {
-                holder.itemView.findViewById<TextView>(R.id.tv_name).text = item.name
-                holder.itemView.setOnClickListener {
-                    showToast(activity, item.name)
-                }
+    fun showBottomSheet(activity: Activity, type: Int) {
+        val bottomSheetDialog = MUIBottomSheetSelectedBuilder<InnerSelectData>(activity)
+            .setTitle("单选 Bottom Sheet")
+            .setHint("若有需要，这里是辅助文字")
+            .setData(arrayListOf(
+                InnerSelectData("Select1"),
+                InnerSelectData("Select2"),
+                InnerSelectData("Select3"),
+                InnerSelectData("Select4"),
+                InnerSelectData("Select5"),
+                InnerSelectData("Select6"),
+                InnerSelectData("Select7"),
+                InnerSelectData("Select8"),
+                InnerSelectData("Select9"),
+                InnerSelectData("Select10"),
+                InnerSelectData("Select11"),
+                InnerSelectData("Select12"),
+                InnerSelectData("Select13"),
+                InnerSelectData("Select14"),
+                InnerSelectData("Select15"),
+                InnerSelectData("Select16")
+            ), 0)
+            .setCommitButton("Submit") {
+                showToast(activity, it.toString())
             }
-
-        })
-        adapter.setItems(arrayListOf(
-            InnerData("Test1", 1),
-            InnerData("Test2", 1),
-            InnerData("Test3", 1),
-            InnerData("Test4", 1),
-            InnerData("Test5", 1),
-            InnerData("Test6", 1),
-            InnerData("Test7", 1),
-            InnerData("Test8", 1),
-            InnerData("Test9", 1),
-            InnerData("Test10", 1),
-            InnerData("Test11", 1),
-            InnerData("Test12", 1),
-            InnerData("Test13", 1),
-            InnerData("Test14", 1),
-            InnerData("Test15", 1)
-        ))
-        demoView.adapter = adapter
-        demoView.layoutManager = LinearLayoutManager(recycler.context)
-        val bottomSheetDialog = MUIBottomSheetBuilder(activity)
-            .setContainer(demoView, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 300.dp2px.toInt()))
-            .setTitle("BottomSheet")
-            .setRadius(15.dp2px.toInt())
-            .setShadowElevation(15.dp2px.toInt())
-            .setShadowAlpha(0.25f)
             .build()
         bottomSheetDialog.show()
     }
@@ -225,6 +199,8 @@ class DialogComponentDepend : ComponentDepend(), View.OnClickListener {
         val name: String,
         val type: Int
     )
+
+    class InnerSelectData(override var content: String) : ISelectItem
 
     override fun onClick(v: View?) {
         dialog?.dismiss()

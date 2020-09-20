@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import bizuikit.utils.inflate
 import com.example.bytedancedemo.R
 
 /**
@@ -23,7 +24,7 @@ open class MUIDialogBuilder(
     private var shadowAlpha = 0f
     private var shadowColor = Color.BLACK
 
-    var container: View? = null
+    var container: LinearLayout? = null
     var containerId = -1
 
 
@@ -60,7 +61,7 @@ open class MUIDialogBuilder(
     }
 
     fun setContainer(
-        container: View, lp: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+        container: LinearLayout, lp: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
@@ -88,10 +89,8 @@ open class MUIDialogBuilder(
 
     open fun build(defStyle: Int): MUIDialog {
         dialog = MUIDialog(activity, defStyle)
-        dialog.addView(buildContainer(),
-            ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
-            ))
+        container = dialog.container.inflate(containerId, attachToRoot = true)
+        buildContainer()
         dialog.setRadius(radius)
         dialog.setShadowElevation(shadowElevation)
         dialog.setShadowAlpha(shadowAlpha)
@@ -99,14 +98,12 @@ open class MUIDialogBuilder(
         return dialog
     }
 
-    open fun buildContainer() : View {
-        val root = LinearLayout(activity)
-        root.orientation = LinearLayout.VERTICAL
-        addContainer(root)
-        return root
+    open fun buildContainer() : LinearLayout {
+        addContainer(container)
+        return container!!
     }
 
-    open fun addContainer(root: LinearLayout) {}
+    open fun addContainer(root: LinearLayout?) {}
 
 
 

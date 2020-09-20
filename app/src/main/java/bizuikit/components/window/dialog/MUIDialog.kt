@@ -19,7 +19,7 @@ class MUIDialog : MUIBaseDialog, IMUIShapeLayout {
 
     private val root: ViewGroup
 
-    private val container: MUILayout
+    val container: MUILayout
 
     constructor(context: Context) : this(context, R.style.MUIBaseDialog_Dialog)
 

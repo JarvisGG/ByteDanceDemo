@@ -146,8 +146,10 @@ class MUIDialogNormalBuilder(
     /**
      * 添加 Container
      */
-    override fun addContainer(root: LinearLayout) {
-        root.inflate<ViewGroup>(R.layout.mui_dialog_container_normal, attachToRoot = true)
+    override fun addContainer(root: LinearLayout?) {
+        if (root == null) {
+            return
+        }
         val titleView = root.findViewById<TextView>(R.id.tv_title)
         titleView.text = title
         if (title.isNotEmpty()) {
