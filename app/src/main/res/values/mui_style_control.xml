@@ -23,7 +23,7 @@
 
     <!-- RadioButton -->
     <style name="MUIRadioButton">
-        <item name="android:button">@drawable/radio_default_selector</item>
+        <item name="android:button">@drawable/mui_radio_default_selector</item>
     </style>
 
     <style name="MUIRadioButton.Default">
@@ -33,7 +33,7 @@
 
     <!-- CheckBox -->
     <style name="MUICheckBox">
-        <item name="android:button">@drawable/radio_default_selector</item>
+        <item name="android:button">@drawable/mui_radio_default_selector</item>
     </style>
 
     <style name="MUICheckBox.Default">

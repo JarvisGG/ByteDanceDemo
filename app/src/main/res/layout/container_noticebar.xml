@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         style="@style/MUINoticeBar.RED"
         app:mui_textTitle="阿看见大煞风送到发"
-        app:mui_iconSrc="@drawable/ic_arrow"
+        app:mui_iconSrc="@drawable/mui_ic_arrow"
         app:mui_hasNoticeIcon="true"
         app:mui_hasNoticeRightIcon="true"/>
 

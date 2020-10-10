@@ -30,7 +30,7 @@
             android:gravity="top"
             android:textColor="@color/text_color_5E6166"
             android:textColorHint="#CACBCC"
-            android:textCursorDrawable="@drawable/edit_default_cursor"
+            android:textCursorDrawable="@drawable/mui_edit_default_cursor"
             android:maxLines="4"
             android:textSize="15sp" />
 

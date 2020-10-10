@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_badge"
+    android:layout_width="wrap_content"
+    android:layout_height="16dp"
+    android:background="@drawable/mui_num_badge_bg"
+    android:textSize="11sp"
+    android:textColor="@android:color/white"
+    android:gravity="center"
+    android:paddingStart="4.5dp"
+    android:paddingEnd="4.5dp"
+    tools:text="91239+" />
