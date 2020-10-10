@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MUINoticeBar">
+        <attr name="mui_backgroundColor"/>
+        <attr name="mui_textColor"/>
+        <attr name="mui_iconSrc"/>
+        <attr name="mui_hasNoticeIcon" format="boolean" />
+        <attr name="mui_hasNoticeRightIcon" format="boolean" />
+        <attr name="mui_textTitle" />
+    </declare-styleable>
+
+    <style name="MUINoticeBar">
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="MUINoticeBar.BLUE" parent="MUINoticeBar">
+        <item name="mui_backgroundColor">#DAE8FB</item>
+        <item name="mui_textColor">#1966FF</item>
+    </style>
+
+    <style name="MUINoticeBar.YELLOW" parent="MUINoticeBar">
+        <item name="mui_backgroundColor">#FFEEDE</item>
+        <item name="mui_textColor">#FF860D</item>
+    </style>
+
+    <style name="MUINoticeBar.RED" parent="MUINoticeBar">
+        <item name="mui_backgroundColor">#FFE8E8</item>
+        <item name="mui_textColor">#F24141</item>
+    </style>
+
+    <style name="MUINoticeBar.GREEN" parent="MUINoticeBar">
+        <item name="mui_backgroundColor">#DDF3DD</item>
+        <item name="mui_textColor">#12B212</item>
+    </style>
+
+</resources>

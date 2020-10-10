@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="20dp"
+    android:orientation="vertical">
+
+    <bizuikit.components.input.MUIInput
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mui_hasCount="false" />
+
+    <bizuikit.components.input.MUIInput
+        android:id="@+id/input1"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mui_maxCount="50" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="300dp">
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/normal"
+            style="@style/MUIButton.Medium.Default"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="4dp"
+            android:text="取消失败文案" />
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/error"
+            android:layout_marginStart="20dp"
+            style="@style/MUIButton.Medium.Waring"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="4dp"
+            android:text="显示失败文案" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

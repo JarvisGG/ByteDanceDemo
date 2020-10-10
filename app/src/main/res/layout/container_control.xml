@@ -28,7 +28,7 @@
         style="@style/MUISwitch.Default"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        app:kswBackColor="@color/switch_default_color"
+        app:kswBackColor="@color/mui_switch_default_color"
         app:kswThumbColor="#fff" />
 
     <TextView

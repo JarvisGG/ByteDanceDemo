@@ -12,7 +12,7 @@ import bizuikit.components.common.MUIShapeHelper
  * @date: 2020/9/16
  * @desc:
  */
-class MUILayout : LinearLayout, IMUIShapeLayout {
+open class MUILayout : LinearLayout, IMUIShapeLayout {
 
     private val helper by lazy {
         MUIShapeHelper()

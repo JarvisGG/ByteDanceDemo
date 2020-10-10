@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp">
+
+    <ImageView
+        android:id="@+id/iv_notice"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_alert"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        tools:text="哈哈圣诞节发贺卡开机收到回复哈哈圣诞节发贺卡开机收到回复哈哈圣诞节发贺卡开机收到回复哈哈圣诞节发贺卡开机收到回复哈哈圣诞节发贺卡开机收到回复哈哈圣诞节发贺卡开机收到回复哈哈圣诞节发贺卡开机收到回复哈哈圣诞节发贺卡开机收到回复哈哈圣诞节发贺卡开机收到回复"
+        android:textSize="13dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/mui_ic_close"/>
+
+</LinearLayout>

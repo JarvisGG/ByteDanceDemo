@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <bizuikit.components.notice.MUINoticeBar
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/MUINoticeBar.BLUE"
+        app:mui_textTitle="阿看见大煞风景看哈就快点放寒假卡和克里斯朵夫看哈就快点放寒假卡和克里斯朵夫阿斯顿发送到看哈就快点放寒假卡和克里斯朵夫阿斯顿发送到阿斯顿发送到发"
+        app:mui_iconSrc="@drawable/mui_ic_close"
+        app:mui_hasNoticeIcon="true"
+        app:mui_hasNoticeRightIcon="true"
+        />
+
+    <bizuikit.components.notice.MUINoticeBar
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/MUINoticeBar.RED"
+        app:mui_textTitle="阿看见大煞风送到发"
+        app:mui_iconSrc="@drawable/ic_arrow"
+        app:mui_hasNoticeIcon="true"
+        app:mui_hasNoticeRightIcon="true"/>
+
+    <bizuikit.components.notice.MUINoticeBar
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/MUINoticeBar.YELLOW"
+        app:mui_textTitle="阿看见大煞风景发"
+        app:mui_hasNoticeRightIcon="false"/>
+
+    <bizuikit.components.notice.MUINoticeBar
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/MUINoticeBar.GREEN"
+        app:mui_textTitle="阿看见大煞风景"
+        app:mui_iconSrc="@drawable/mui_ic_close"
+        app:mui_hasNoticeIcon="true"
+        app:mui_hasNoticeRightIcon="true"/>
+
+
+    <bizuikit.components.notice.MUINoticeBar
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/MUINoticeBar.BLUE"
+        app:mui_textTitle="阿看见大煞风阿斯顿发送到阿斯顿发送到发"
+        app:mui_iconSrc="@drawable/mui_ic_close"
+        app:mui_hasNoticeIcon="false"
+        app:mui_hasNoticeRightIcon="false"
+        />
+</LinearLayout>
