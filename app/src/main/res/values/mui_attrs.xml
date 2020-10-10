@@ -83,4 +83,13 @@
 
 
 
+    <declare-styleable name="SwitchBase">
+        <attr name="ms_thumb" format="reference" />
+        <attr name="ms_track" format="reference" />
+        <attr name="ms_switchMinWidth" format="dimension" />
+        <attr name="ms_switchPadding" format="dimension" />
+    </declare-styleable>
+
+
+
 </resources>

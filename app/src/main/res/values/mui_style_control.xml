@@ -4,8 +4,8 @@
 
     <!-- Switch 属性 -->
     <declare-styleable name="MUISwitch">
-        <attr name="coverColor" />
-        <attr name="coverAlpha" />
+        <attr name="mui_coverColor" />
+        <attr name="mui_coverAlpha" />
     </declare-styleable>
 
     <style name="MUISwitch">
@@ -17,8 +17,8 @@
     <style name="MUISwitch.Default">
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">20dp</item>
-        <item name="coverAlpha">0.1</item>
-        <item name="coverColor">#FFFFFF</item>
+        <item name="mui_coverAlpha">0.1</item>
+        <item name="mui_coverColor">#FFFFFF</item>
     </style>
 
     <!-- RadioButton -->

@@ -30,7 +30,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="1px"
-        style="@style/DividerLineStyle"
+        style="@style/MUIDivider.Horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

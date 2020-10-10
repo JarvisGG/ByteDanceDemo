@@ -37,8 +37,8 @@ class MUISwitch : SwitchButton {
             return
         }
         context.obtainStyledAttributes(attrs, R.styleable.MUISwitch).run {
-            coverColor = getColor(R.styleable.MUISwitch_coverColor, Color.WHITE)
-            coverAlpha = (getFloat(R.styleable.MUISwitch_coverAlpha, 0f) * 255).toInt()
+            coverColor = getColor(R.styleable.MUISwitch_mui_coverColor, Color.WHITE)
+            coverAlpha = (getFloat(R.styleable.MUISwitch_mui_coverAlpha, 0f) * 255).toInt()
             recycle()
         }
     }

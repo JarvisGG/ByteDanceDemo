@@ -29,7 +29,8 @@ import kotlin.reflect.full.createInstance
     LayoutComponentDepend::class,
     InputComponentDepend::class,
     NoticeBarComponentDepend::class,
-    BadgeComponentDepend::class
+    BadgeComponentDepend::class,
+    SearchBarComponentDepend::class
 )
 class UiKitActivity : AppCompatActivity() {
 

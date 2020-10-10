@@ -109,7 +109,7 @@
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:minWidth">50dp</item>
-        <item name="textSize">13sp</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="MUIButton.Small.Stress" parent="MUIButton.Small">
