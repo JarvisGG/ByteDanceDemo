@@ -143,44 +143,44 @@
 
     <style name="MUIButton.Text.Stress15" parent="MUIButton.Text">
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/button_text_stress_color</item>
+        <item name="android:textColor">@color/mui_button_text_stress_color</item>
     </style>
 
     <style name="MUIButton.Text.Default15" parent="MUIButton.Text">
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/button_text_default_color</item>
+        <item name="android:textColor">@color/mui_button_text_default_color</item>
     </style>
 
     <style name="MUIButton.Text.Sub15" parent="MUIButton.Text">
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/button_text_sub_color</item>
+        <item name="android:textColor">@color/mui_button_text_sub_color</item>
     </style>
 
     <style name="MUIButton.Text.Waring15" parent="MUIButton.Text">
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/button_text_waring_color</item>
+        <item name="android:textColor">@color/mui_button_text_waring_color</item>
     </style>
 
     <style name="MUIButton.Text.Stress13" parent="MUIButton.Text">
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/button_text_stress_color</item>
+        <item name="android:textColor">@color/mui_button_text_stress_color</item>
 
     </style>
 
     <style name="MUIButton.Text.Default13" parent="MUIButton.Text">
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/button_text_default_color</item>
+        <item name="android:textColor">@color/mui_button_text_default_color</item>
     </style>
 
     <style name="MUIButton.Text.Sub13" parent="MUIButton.Text">
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/button_text_sub_color</item>
+        <item name="android:textColor">@color/mui_button_text_sub_color</item>
 
     </style>
 
     <style name="MUIButton.Text.Waring13" parent="MUIButton.Text">
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/button_text_waring_color</item>
+        <item name="android:textColor">@color/mui_button_text_waring_color</item>
     </style>
 
     <style name="MUIButton.Add" parent="MUIButton">
