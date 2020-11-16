@@ -10,9 +10,8 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doAfterTextChanged
 import bizuikit.components.utils.ReasonView
 import bizuikit.utils.inflate
 import com.example.bytedancedemo.R
@@ -31,6 +30,9 @@ class MUIInput : FrameLayout {
     private lateinit var tvCount: TextView
 
     private var textChangedCallback: TextChangedCallback? = null
+
+    @LayoutRes
+    private var layoutResIdRes: Int = R.layout.mui_input_single
 
     /**
      * 是否具有晴空按钮
@@ -73,12 +75,17 @@ class MUIInput : FrameLayout {
             hasClear = getBoolean(R.styleable.MUIInput_mui_hasClear, true)
             hasCount = getBoolean(R.styleable.MUIInput_mui_hasCount, true)
             maxCount = getInt(R.styleable.MUIInput_mui_maxCount, -1)
+            layoutResIdRes = getResourceId(R.styleable.MUIInput_layout, R.layout.mui_input_single)
             recycle()
         }
     }
 
     private fun initView() {
-        this.inflate<View>(R.layout.mui_input, true)
+        val container = this.inflate<View>(layoutResIdRes, false)
+        addView(container, LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            LayoutParams.MATCH_PARENT
+        ))
         editText = findViewById(R.id.rt_content)
         ivClear = findViewById(R.id.iv_clear)
         tvCount = findViewById(R.id.tv_count)
@@ -90,7 +97,7 @@ class MUIInput : FrameLayout {
         if (maxCount != -1) {
             editText.filters += MaxLengthFilter(maxCount)
         }
-        editText.setOnEditorActionListener { v, actionId, event ->
+        editText.setOnEditorActionListener { _, actionId, _ ->
             actionId != KeyEvent.KEYCODE_ENTER
         }
 

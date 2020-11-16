@@ -19,6 +19,7 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/iv_search"
             android:src="@drawable/mui_ic_search"
             android:layout_width="16dp"
             android:layout_height="16dp"/>
@@ -30,9 +31,9 @@
             android:layout_weight="1"
             android:textSize="15dp"
             android:singleLine="true"
-            android:textColorHint="#A9ABAD"
+            android:textColorHint="@color/text_color_B9BABD"
             android:layout_gravity="center_vertical"
-            android:textColor="#25292E"
+            android:textColor="@color/text_color_5E6166"
             android:textCursorDrawable="@drawable/mui_edit_default_cursor"
             android:background="@android:color/transparent"
             android:layout_height="wrap_content"/>
@@ -52,9 +53,9 @@
         android:paddingRight="12dp"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:textSize="15dp"
+        android:textSize="13dp"
         android:text="取消"
-        android:textColor="#1966FF"
+        android:textColor="@color/text_color_86898C"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
 

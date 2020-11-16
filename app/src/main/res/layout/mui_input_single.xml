@@ -29,7 +29,7 @@
             android:background="@null"
             android:gravity="top"
             android:textColor="@color/text_color_5E6166"
-            android:textColorHint="#CACBCC"
+            android:textColorHint="@color/text_color_B9BABD"
             android:textCursorDrawable="@drawable/mui_edit_default_cursor"
             android:maxLines="4"
             android:textSize="15sp" />
@@ -52,7 +52,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="#B9BABD"
+            android:textColor="@color/text_color_B9BABD"
             android:textSize="13sp"
             android:layout_marginStart="4dp"
             tools:text="3/20"/>

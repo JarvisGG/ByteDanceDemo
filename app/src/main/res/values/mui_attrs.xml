@@ -72,12 +72,6 @@
         <attr name="mui_textTitle" />
     </declare-styleable>
 
-    <!-- Input -->
-    <declare-styleable name="MUIInput">
-        <attr name="mui_hasClear" format="boolean"/>
-        <attr name="mui_hasCount" format="boolean"/>
-        <attr name="mui_maxCount" format="integer|reference"/>
-    </declare-styleable>
 
     <attr name="mui_bottom_sheet_background_dim_amount" format="float" />
 

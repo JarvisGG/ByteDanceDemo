@@ -15,6 +15,7 @@ class InputComponentDepend : ComponentDepend() {
 
     private var input: MUIInput? = null
     private var input1: MUIInput? = null
+    private var input2: MUIInput? = null
     private var error: MUIButton? = null
     private var normal: MUIButton? = null
 
@@ -27,6 +28,8 @@ class InputComponentDepend : ComponentDepend() {
         input?.editText?.hint = "测试测试测试测试"
         input1 = root.findViewById(R.id.input1)
         input1?.editText?.hint = "测试测试测试测试1"
+        input2 = root.findViewById(R.id.input2)
+        input2?.editText?.hint = "测试测试测试测试2"
         error = root.findViewById(R.id.error)
         error?.setOnClickListener {
             input?.reason?.showErrorView("哈哈哈哈")

@@ -10,14 +10,25 @@
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/MUIInput.Single"
         app:mui_hasCount="false" />
+
 
     <bizuikit.components.input.MUIInput
         android:id="@+id/input1"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/MUIInput.Single"
         app:mui_maxCount="50" />
+
+    <bizuikit.components.input.MUIInput
+        android:id="@+id/input2"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        style="@style/MUIInput.Multi"
+        app:mui_maxCount="200" />
 
 
     <LinearLayout
@@ -25,7 +36,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="300dp">
+        android:layout_marginTop="100dp">
 
         <bizuikit.components.button.MUIButton
             android:id="@+id/normal"

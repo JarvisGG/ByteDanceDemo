@@ -26,7 +26,6 @@
         android:id="@+id/ml_container"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:minHeight="130dp"
         android:layout_gravity="center_horizontal|top">
 
 

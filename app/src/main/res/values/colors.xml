@@ -85,7 +85,8 @@
         <color name="text_color_333333">#333333</color>
         <color name="text_color_f24444">#f24444</color>
         <color name="text_color_f24141">#f24141</color>
-        <color name="text_color_878A8F">#878A8F</color>
+    <color name="text_color_878A8F">#878A8F</color>
+    <color name="text_color_B9BABD">#B9BABD</color>
         <color name="text_color_A9ABAD">#A9ABAD</color>
         <color name="text_color_CACBCC">#CACBCC</color>
         <color name="text_color_F5F6F7">#F5F6F7</color>

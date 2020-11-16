@@ -162,11 +162,7 @@ class MUIDialogNormalBuilder(
         messageView.text = message
         // 滚起来
         messageView.movementMethod = ScrollingMovementMethod()
-        if (message.isNotEmpty()) {
-            messageView.visibility = View.VISIBLE
-        } else {
-            messageView.visibility = View.GONE
-        }
+
         val gradientView = root.findViewById<View>(R.id.v_gradient)
 
         messageView.post {
@@ -190,6 +186,14 @@ class MUIDialogNormalBuilder(
         if (hint.isNotEmpty()) {
             hintView.visibility = View.VISIBLE
         } else {
+            hintView.visibility = View.INVISIBLE
+        }
+
+        if (message.isNotEmpty()) {
+            messageView.visibility = View.VISIBLE
+            hintView.visibility = View.VISIBLE
+        } else {
+            messageView.visibility = View.GONE
             hintView.visibility = View.GONE
         }
 

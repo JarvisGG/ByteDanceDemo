@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <declare-styleable name="MUIInput">
+        <attr name="layout" />
+        <attr name="mui_hasClear" format="boolean"/>
+        <attr name="mui_hasCount" format="boolean"/>
+        <attr name="mui_maxCount" format="integer|reference"/>
+    </declare-styleable>
+
+    <!-- MUIInput -->
+    <style name="MUIInput"></style>
+
+    <style name="MUIInput.Single" parent="MUIInput">
+        <item name="layout">@layout/mui_input_single</item>
+    </style>
+
+    <style name="MUIInput.Multi" parent="MUIInput">
+        <item name="layout">@layout/mui_input_multi</item>
+    </style>
+
+</resources>

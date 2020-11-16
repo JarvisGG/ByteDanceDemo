@@ -17,4 +17,12 @@
         android:layout_marginStart="100dp"
         style="@style/MUIDivider.Horizontal" />
 
+    <bizuikit.components.MUIDemoView
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/default_divide_line_color"
+        android:alpha="0"/>
+
 </LinearLayout>
