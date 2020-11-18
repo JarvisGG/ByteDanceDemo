@@ -4,4 +4,7 @@
     <string name="button_start_now">确定</string>
     <string name="button_end_now">取消</string>
     <string name="button_konw">知道了</string>
+
+    <string name="remove_bubble_description">Remove Floating Bubble</string>
+    <string name="floating_bubble_description">Floating Bubble</string>
 </resources>

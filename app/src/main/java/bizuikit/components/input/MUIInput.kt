@@ -14,7 +14,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.AppCompatEditText
 import bizuikit.components.utils.ReasonView
 import bizuikit.utils.inflate
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

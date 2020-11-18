@@ -2,7 +2,7 @@ package bizuikit.show.depend
 
 import android.app.Activity
 import android.view.ViewGroup
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import bizuikit.ComponentDepend
 import bizuikit.components.badge.MUIBadge
 import bizuikit.components.button.MUIButton

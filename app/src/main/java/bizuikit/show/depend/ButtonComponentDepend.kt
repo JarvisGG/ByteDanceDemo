@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import bizuikit.ComponentDepend
 import bizuikit.components.button.MUIButton
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

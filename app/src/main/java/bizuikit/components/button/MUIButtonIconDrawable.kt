@@ -4,9 +4,8 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.annotation.IntDef
-import androidx.core.content.ContextCompat
 import bizuikit.utils.dp2px
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

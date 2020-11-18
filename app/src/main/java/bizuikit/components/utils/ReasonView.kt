@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import bizuikit.utils.dp2px
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * Created by yangjianjun on 2020/6/11

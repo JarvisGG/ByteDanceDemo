@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import bizuikit.show.depend.*
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import kotlinx.android.synthetic.main.activity_main.*
 import me.drakeet.multitype.ItemViewBinder
 import me.drakeet.multitype.MultiTypeAdapter
@@ -30,7 +30,8 @@ import kotlin.reflect.full.createInstance
     InputComponentDepend::class,
     NoticeBarComponentDepend::class,
     BadgeComponentDepend::class,
-    SearchBarComponentDepend::class
+    SearchBarComponentDepend::class,
+    BubbleComponentDepend::class
 )
 class UiKitActivity : AppCompatActivity() {
 

@@ -2,14 +2,9 @@ package bizuikit.components.window.bottomsheet
 
 import android.app.Activity
 import android.graphics.Color
-import android.text.TextUtils
-import android.view.View
 import android.widget.LinearLayout
-import bizuikit.components.bar.MUITitleBar
-import bizuikit.utils.getToolBarHeight
 import bizuikit.utils.inflate
-import bizuikit.utils.sp2px
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

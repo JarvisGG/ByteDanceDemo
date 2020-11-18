@@ -1,8 +1,6 @@
 package bizuikit.components.search
 
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -13,7 +11,7 @@ import android.widget.TextView
 import bizuikit.components.input.getTextCount
 import bizuikit.components.layout.MUILayout
 import bizuikit.utils.inflate
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

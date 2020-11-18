@@ -5,7 +5,7 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import bizuikit.ComponentDepend.Companion.COMPONENT_KEY
 import bizuikit.utils.inflate
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import kotlinx.android.synthetic.main.activity_detial.*
 
 /**

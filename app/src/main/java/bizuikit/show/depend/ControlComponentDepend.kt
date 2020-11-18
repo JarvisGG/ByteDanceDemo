@@ -6,7 +6,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 import bizuikit.ComponentDepend
 import bizuikit.components.control.selection.MUISwitch
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

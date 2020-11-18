@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import bizuikit.components.button.MUIButton
 import bizuikit.utils.dp2px
 import bizuikit.utils.screenHeight
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import kotlinx.android.extensions.LayoutContainer
 import me.drakeet.multitype.ItemViewBinder
 import me.drakeet.multitype.MultiTypeAdapter

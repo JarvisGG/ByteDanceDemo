@@ -15,7 +15,7 @@ import bizuikit.components.window.dialog.MUIDialog
 import bizuikit.components.window.dialog.MUIDialogNormalBuilder
 import bizuikit.components.window.toast.showIconToast
 import bizuikit.components.window.toast.showToast
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import me.drakeet.multitype.ItemViewBinder
 import me.drakeet.multitype.MultiTypeAdapter
 

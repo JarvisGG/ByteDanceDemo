@@ -18,7 +18,7 @@ import bizuikit.components.common.MUIShapeHelper.Companion.RADIUS_OF_HALF_VIEW_W
 import bizuikit.components.layout.MUILayout
 import bizuikit.utils.dp2px
 import bizuikit.utils.px2dp
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

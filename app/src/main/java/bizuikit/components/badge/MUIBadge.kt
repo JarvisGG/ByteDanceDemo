@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.TextView
 import bizuikit.components.layout.MUILayout
 import bizuikit.utils.inflate
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

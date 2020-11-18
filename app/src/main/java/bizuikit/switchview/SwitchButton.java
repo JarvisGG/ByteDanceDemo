@@ -29,7 +29,7 @@ import android.widget.CompoundButton;
 
 import androidx.core.content.ContextCompat;
 
-import com.example.bytedancedemo.R;
+import com.example.bytedance_demo.R;
 
 
 /**

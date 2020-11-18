@@ -8,7 +8,7 @@ import android.widget.FrameLayout
 import bizuikit.components.common.IMUIShapeLayout
 import bizuikit.components.layout.MUILayout
 import bizuikit.components.window.MUIBaseDialog
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

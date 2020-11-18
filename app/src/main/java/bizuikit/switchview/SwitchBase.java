@@ -14,7 +14,7 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.widget.CompoundButton;
 
-import com.example.bytedancedemo.R;
+import com.example.bytedance_demo.R;
 
 
 public class SwitchBase extends CompoundButton {

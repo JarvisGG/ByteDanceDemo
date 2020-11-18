@@ -1,4 +1,4 @@
-package com.example.bytedancedemo.widget
+package com.example.bytedance_demo.widget
 
 import android.content.Context
 import android.content.res.Resources

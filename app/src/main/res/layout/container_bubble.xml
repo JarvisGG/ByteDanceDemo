@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--    <bizuikit.components.bubble.BubbleLayout-->
+<!--        android:id="@+id/mui_bubble_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+    <bizuikit.components.button.MUIButton
+        android:id="@+id/start_bubble"
+        style="@style/MUIButton.Large.Default"
+        android:layout_gravity="center"
+        android:text="Bubble!"/>
+
+</FrameLayout>

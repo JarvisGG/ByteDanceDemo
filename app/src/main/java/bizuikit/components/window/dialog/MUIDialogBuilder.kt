@@ -2,11 +2,9 @@ package bizuikit.components.window.dialog
 
 import android.app.Activity
 import android.graphics.Color
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import bizuikit.utils.inflate
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 /**
  * @author: yyf

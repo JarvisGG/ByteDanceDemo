@@ -1,4 +1,4 @@
-package com.example.bytedancedemo
+package com.example.bytedance_demo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

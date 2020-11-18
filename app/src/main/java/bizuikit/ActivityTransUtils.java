@@ -2,7 +2,7 @@ package bizuikit;
 
 import android.app.Activity;
 
-import com.example.bytedancedemo.R;
+import com.example.bytedance_demo.R;
 
 
 public class ActivityTransUtils {

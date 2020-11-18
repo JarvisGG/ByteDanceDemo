@@ -3,13 +3,11 @@ package bizuikit.components.window.dialog
 import android.app.Activity
 import android.text.method.ScrollingMovementMethod
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import bizuikit.components.button.MUIButton
 import bizuikit.utils.dp2px
-import bizuikit.utils.inflate
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 
 /**

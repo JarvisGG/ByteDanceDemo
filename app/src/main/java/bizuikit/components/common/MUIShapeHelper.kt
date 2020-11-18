@@ -12,7 +12,7 @@ import bizuikit.components.common.IMUIShapeLayout.Companion.HIDE_RADIUS_SIDE_LEF
 import bizuikit.components.common.IMUIShapeLayout.Companion.HIDE_RADIUS_SIDE_NONE
 import bizuikit.components.common.IMUIShapeLayout.Companion.HIDE_RADIUS_SIDE_RIGHT
 import bizuikit.components.common.IMUIShapeLayout.Companion.HIDE_RADIUS_SIDE_TOP
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import java.lang.ref.WeakReference
 
 /**

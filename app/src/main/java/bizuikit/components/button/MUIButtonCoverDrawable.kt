@@ -5,7 +5,7 @@ import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.annotation.ColorInt
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import bizuikit.utils.dp2px
 
 /**

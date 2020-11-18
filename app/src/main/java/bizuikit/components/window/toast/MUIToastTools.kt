@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import bizuikit.components.utils.runOnUIThread
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 
 @Suppress("unused")
 fun showToast(context: Context?, msg: CharSequence?) {

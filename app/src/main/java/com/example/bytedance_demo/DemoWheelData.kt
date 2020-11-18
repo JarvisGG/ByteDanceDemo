@@ -1,6 +1,6 @@
-package com.example.bytedancedemo
+package com.example.bytedance_demo
 
-import com.example.bytedancedemo.widget.IWheelEntity
+import com.example.bytedance_demo.widget.IWheelEntity
 
 class DemoWheelData(
     override val wheelText: String?

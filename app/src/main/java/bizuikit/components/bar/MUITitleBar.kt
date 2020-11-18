@@ -16,7 +16,7 @@ import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.LEFT
 import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.RIGHT
 import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.UNSPECIFIED_PAIR
 import bizuikit.components.bar.MUITitleBar.LayoutParams.Companion.getAbsolutePart
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import bizuikit.utils.sp2px
 import java.util.*
 import kotlin.math.max

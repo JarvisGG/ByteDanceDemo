@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat
 import bizuikit.components.common.IMUIShapeLayout
 import bizuikit.components.window.MUIBaseDialog
 import bizuikit.components.layout.MUILayout
-import com.example.bytedancedemo.R
+import com.example.bytedance_demo.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 
