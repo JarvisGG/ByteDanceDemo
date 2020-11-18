@@ -118,12 +118,7 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
 
     private fun getTouchableRegion(outRect: Rect) {
         if (childCount > 0) {
-            ReflectionUtils.getBoundsOnScreen(getChildAt(0), outRect)
-            outRect.top -= 0
-            outRect.left -= 0
-            outRect.right += 0
-            outRect.bottom += 0
-            Log.e(TAG, outRect.flattenToString())
+            bubbleAnimationController.getBoundsOnScreen(outRect)
         }
     }
 

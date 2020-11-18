@@ -1,11 +1,11 @@
 package bizuikit.components.bubble
 
+import android.content.Context
 import android.graphics.PointF
+import android.graphics.Rect
 import android.graphics.RectF
-import android.os.Build
+import android.util.Log
 import android.view.View
-import android.view.WindowInsets
-import androidx.annotation.RequiresApi
 import androidx.dynamicanimation.animation.*
 import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
 import bizuikit.utils.dp2px
@@ -41,6 +41,14 @@ open class BubbleAnimationController(
     private val bubblePosition = PointF((-1).toFloat(), (-1).toFloat())
 
     private val bubblePositionAnimations = HashMap<ViewProperty, DynamicAnimation<*>>()
+
+    private val context: Context by lazy {
+        layout.context
+    }
+
+    private val statusBarHeight by lazy {
+        getStatusBarHeight(context)
+    }
 
     fun moveBubbleFromTouch(x: Float, y: Float, vararg update: Runnable?) {
         if (springToTouchOnNextMotionEvent) {
@@ -214,8 +222,8 @@ open class BubbleAnimationController(
         val allowableRegion = RectF()
         allowableRegion.left = 0f
         allowableRegion.right = layout.width - bubbleSize
-        allowableRegion.top = 0f
-        allowableRegion.bottom = layout.height- bubbleSize
+        allowableRegion.top = statusBarHeight.toFloat()
+        allowableRegion.bottom = layout.height - bubbleSize
         return allowableRegion
     }
 
@@ -231,6 +239,23 @@ open class BubbleAnimationController(
         bubblePosition.set(pos.x, pos.y)
         layout.getChildAt(0).translationX = pos.x
         layout.getChildAt(0).translationY = pos.y
+    }
+
+    /**
+     * 获取状态栏高度
+     */
+    private fun getStatusBarHeight(context: Context): Int {
+        val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
+        return context.resources.getDimensionPixelSize(resourceId)
+    }
+
+    fun getBoundsOnScreen(outRect: Rect) {
+        ReflectionUtils.getBoundsOnScreen(layout.getChildAt(0), outRect)
+        outRect.top -= statusBarHeight
+        outRect.left -= 0
+        outRect.right += 0
+        outRect.bottom -= statusBarHeight
+        Log.e(BubbleLayout.TAG, outRect.flattenToString())
     }
 
     inner class BubblePositionProperty(
