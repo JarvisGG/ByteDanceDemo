@@ -1,8 +1,6 @@
 package bizuikit.components.bubble
 
 import android.os.AsyncTask
-import android.view.LayoutInflater
-import com.example.bytedance_demo.R
 
 /**
  * @author: yyf
@@ -17,15 +15,14 @@ class Bubble {
 
     private var inflateSynchronously = false
 
-    fun inflate(inflater: LayoutInflater, layout: BubbleLayout, callback: BubbleViewInfoTask.Callback) {
+    fun inflate(layout: BubbleLayout, callback: BubbleViewInfoTask.Callback) {
 
-        bubbleView = inflater.inflate(R.layout.mui_bubble_view, layout, false) as BubbleView
         layout.post {
             if (isBubbleLoading()) {
                 inflationTask?.cancel(true)
             }
             inflationTask = BubbleViewInfoTask(
-                layout.context, this, layout, callback
+                 this, layout, callback
             ).apply {
                 if (inflateSynchronously) {
                     onPostExecute(doInBackground())

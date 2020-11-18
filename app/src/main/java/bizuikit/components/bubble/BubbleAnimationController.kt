@@ -2,9 +2,10 @@ package bizuikit.components.bubble
 
 import android.graphics.PointF
 import android.graphics.RectF
-import android.util.Log
+import android.os.Build
 import android.view.View
 import android.view.WindowInsets
+import androidx.annotation.RequiresApi
 import androidx.dynamicanimation.animation.*
 import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
 import bizuikit.utils.dp2px
@@ -29,24 +30,11 @@ open class BubbleAnimationController(
         const val ESCAPE_VELOCITY = 750f
         const val TAG = "BubbleAnimationController"
     }
-
-    private val UNSET: Float = -Float.MIN_VALUE
-
-    private val stackOffset = 0f
-
     private val bubbleBitmapSize = 0
 
-    private val bubbleSize = 60.dp2px
-
-    private val bubblePaddingTop = 0
-
-    private val bubbleOffscreen = 0.dp2px
+    private val bubbleSize = 50.dp2px
 
     private val stackStartingVerticalOffset = 0
-
-    private val statusBarHeight = 0
-
-    private val imeHeight = 0f
 
     private var springToTouchOnNextMotionEvent = true
 
@@ -147,7 +135,7 @@ open class BubbleAnimationController(
         val stackShouldFlingLeft = if (stackOnLeftSide)
             velX < ESCAPE_VELOCITY else velX < -ESCAPE_VELOCITY
 
-        val stackBounds = getAllowableStackPositionRegion()
+        val stackBounds = getAllowableBubblePositionRegion()
         val destinationRelativeX = if (stackShouldFlingLeft) stackBounds!!.left else stackBounds!!.right
         if (layout.childCount == 0) {
             return destinationRelativeX
@@ -201,7 +189,7 @@ open class BubbleAnimationController(
     ) {
         val firstBubbleProperty = BubblePositionProperty(property)
         val currentValue: Float = firstBubbleProperty.getValue(this)
-        val bounds = getAllowableStackPositionRegion() ?: return
+        val bounds = getAllowableBubblePositionRegion() ?: return
         val min = if (property == DynamicAnimation.TRANSLATION_X) bounds.left else bounds.top
         val max = if (property == DynamicAnimation.TRANSLATION_X) bounds.right else bounds.bottom
         val flingAnimation = FlingAnimation(this, firstBubbleProperty)
@@ -222,37 +210,20 @@ open class BubbleAnimationController(
     }
 
 
-    open fun getAllowableStackPositionRegion(): RectF? {
-        val insets: WindowInsets = layout.rootWindowInsets
+    open fun getAllowableBubblePositionRegion(): RectF {
         val allowableRegion = RectF()
-        allowableRegion.left = (-bubbleOffscreen + max(
-            insets.systemWindowInsetLeft,
-            if (insets.displayCutout != null) insets.displayCutout!!.safeInsetLeft else 0
-        )).toFloat()
-        allowableRegion.right = (layout.width - bubbleSize + bubbleOffscreen - max(
-            insets.systemWindowInsetRight,
-            if (insets.displayCutout != null) insets.displayCutout!!.safeInsetRight else 0
-        )).toFloat()
-        allowableRegion.top = (bubblePaddingTop + max(
-            statusBarHeight,
-            if (insets.displayCutout != null) insets.displayCutout!!.safeInsetTop else 0
-        )).toFloat()
-        allowableRegion.bottom = (layout.height
-                - bubbleSize
-                - bubblePaddingTop
-                - (if (imeHeight != UNSET) imeHeight + bubblePaddingTop else 0f)
-                - max(
-            insets.stableInsetBottom,
-            if (insets.displayCutout != null) insets.displayCutout!!.safeInsetBottom else 0
-        ))
+        allowableRegion.left = 0f
+        allowableRegion.right = layout.width - bubbleSize
+        allowableRegion.top = 0f
+        allowableRegion.bottom = layout.height- bubbleSize
         return allowableRegion
     }
 
     fun getDefaultStartPosition(): PointF {
         val isRtl = (layout.resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL)
         return PointF(
-            if (isRtl) getAllowableStackPositionRegion()!!.right else getAllowableStackPositionRegion()!!.left,
-            getAllowableStackPositionRegion()!!.top + stackStartingVerticalOffset
+            if (isRtl) getAllowableBubblePositionRegion().right else getAllowableBubblePositionRegion().left,
+            getAllowableBubblePositionRegion().top + stackStartingVerticalOffset
         )
     }
 

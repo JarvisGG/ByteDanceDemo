@@ -12,15 +12,13 @@ import java.lang.ref.WeakReference
  * @desc:
  */
 class BubbleViewInfoTask(
-    context: Context,
     private val bubble: Bubble,
     bubbleLayout: BubbleLayout,
     private val callback: Callback
 ) : AsyncTask<Void, Void, BubbleViewInfo>() {
 
-    private var contextWef: WeakReference<Context> = WeakReference(context)
     private var bubbleWef: WeakReference<BubbleLayout> = WeakReference(bubbleLayout)
-
+    private var contextWef: WeakReference<Context> = WeakReference(bubbleLayout.context)
 
     interface Callback {
         fun onBubbleViewsReady(bubble: Bubble)

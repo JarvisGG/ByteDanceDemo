@@ -49,17 +49,6 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
         }
     }
 
-    private fun getTouchableRegion(outRect: Rect) {
-        if (childCount > 0) {
-            ReflectionUtils.getBoundsOnScreen(getChildAt(0), outRect)
-            outRect.top -= 0
-            outRect.left -= 0
-            outRect.right += 0
-            outRect.bottom += 0
-            Log.e(TAG, outRect.flattenToString())
-        }
-    }
-
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         ReflectionUtils.addOnComputeInternalInsetsListener(
@@ -72,7 +61,6 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
         super.onDetachedFromWindow()
         ReflectionUtils.removeOnComputeInternalInsetsListener(viewTreeObserver)
     }
-
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (ev.action != MotionEvent.ACTION_DOWN && ev.actionIndex != pointerIndexDown) {
@@ -95,11 +83,6 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
         bubble.bubbleView?.setOnClickListener(null)
         addView(bubble.bubbleView)
         bubbleAnimationController.setBubblePosition(bubbleAnimationController.getDefaultStartPosition())
-    }
-
-    private fun updateTouchRegion() {
-        tempRect.setEmpty()
-        getTouchableRegion(tempRect)
     }
 
     private val bubbleTouchListener = object : RelativeTouchListener() {
@@ -131,7 +114,22 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
                 viewInitialX + dx, velX, velY
             )
         }
+    }
 
+    private fun getTouchableRegion(outRect: Rect) {
+        if (childCount > 0) {
+            ReflectionUtils.getBoundsOnScreen(getChildAt(0), outRect)
+            outRect.top -= 0
+            outRect.left -= 0
+            outRect.right += 0
+            outRect.bottom += 0
+            Log.e(TAG, outRect.flattenToString())
+        }
+    }
+
+    private fun updateTouchRegion() {
+        tempRect.setEmpty()
+        getTouchableRegion(tempRect)
     }
 
     override fun onUpdateTouchRect(): Rect {

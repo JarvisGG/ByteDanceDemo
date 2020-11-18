@@ -20,15 +20,9 @@ open class BubbleController(
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     }
 
-    private val inflater: LayoutInflater by lazy {
-        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    }
 
-    /**
-     * 为了解决 一加 电池优化，会无视 wm 添加的 ViewGroup，强行对 app 降级
-     */
-    private val fakeView: View by lazy {
-        View(context)
+    private val fakeView: FakeView by lazy {
+        FakeView(context)
     }
 
     val layout: BubbleLayout by lazy {
@@ -44,7 +38,7 @@ open class BubbleController(
             throw Throwable("controller already add Bubble!")
         }
         ensureBubbleViewCreated()
-        bubble.inflate(inflater, layout, object : BubbleViewInfoTask.Callback {
+        bubble.inflate(layout, object : BubbleViewInfoTask.Callback {
             override fun onBubbleViewsReady(bubble: Bubble) {
                 layout.addBubble(bubble)
                 updateBubble(bubbleData)
@@ -61,11 +55,11 @@ open class BubbleController(
 
     private fun ensureBubbleViewCreated() {
         try {
+            vm.addView(fakeView, getDefaultWindowParams())
             vm.addView(layout, getDefaultWindowParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.MATCH_PARENT
             ))
-            vm.addView(fakeView, getDefaultWindowParams())
         } catch (e: IllegalStateException) {
             e.printStackTrace()
         }

@@ -16,6 +16,7 @@ open class BubbleService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         bubbleController = BubbleController(this)
         bubbleController?.addBubble(Bubble(), BubbleData("asdasd", 1))
+        bubbleController?.updateBubble(BubbleData("1234", 1))
         return super.onStartCommand(intent, flags, START_STICKY)
     }
 
