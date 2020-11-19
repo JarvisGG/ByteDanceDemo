@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name="bizuikit.DetailActivity" />
+        <activity android:name="bizuikit.utils.DemoActivity"
+            android:theme="@style/Animation"/>
 
         <service android:name="bizuikit.components.bubble.BubbleService" />
         <service android:name="bizuikit.show.depend.demo.FloatingBubbleService" />

@@ -30,6 +30,7 @@ open class BubbleAnimationController(
         const val ESCAPE_VELOCITY = 750f
         const val TAG = "BubbleAnimationController"
     }
+
     private val bubbleBitmapSize = 0
 
     private val bubbleSize = 50.dp2px
@@ -108,6 +109,7 @@ open class BubbleAnimationController(
             }
             .setStartVelocity(vel)
 
+        cancelStackPositionAnimation(property)
         bubblePositionAnimations[property] = springAnimation
         springAnimation.animateToFinalPosition(finalPosition)
     }
@@ -144,28 +146,28 @@ open class BubbleAnimationController(
             velX < ESCAPE_VELOCITY else velX < -ESCAPE_VELOCITY
 
         val stackBounds = getAllowableBubblePositionRegion()
-        val destinationRelativeX = if (stackShouldFlingLeft) stackBounds!!.left else stackBounds!!.right
+        val destinationRelativeX = if (stackShouldFlingLeft) stackBounds.left else stackBounds.right
         if (layout.childCount == 0) {
             return destinationRelativeX
         }
 
-        val stiffness = SPRING_AFTER_FLING_STIFFNESS
+        val stiffness = SPRING_AFTER_FLING_STIFFNESS.toFloat()
         val dampingRatio = SPRING_AFTER_FLING_DAMPING_RATIO
         val friction = FLING_FRICTION
-        val minimumVelocityToReachEdge = (destinationRelativeX - x) * (friction * 4.2f)
+
+        val minimumVelocityToReachEdge = (destinationRelativeX - x) * (friction * 4.8f)
 
         val startXVelocity =
             if (stackShouldFlingLeft) min(minimumVelocityToReachEdge, velX) else max(
                 minimumVelocityToReachEdge,
                 velX
             )
-
         flingThenSpringBubbleWithStackFollowing(
             DynamicAnimation.TRANSLATION_X,
             startXVelocity,
             friction,
             SpringForce()
-                .setStiffness(stiffness.toFloat())
+                .setStiffness(stiffness)
                 .setDampingRatio(dampingRatio),
             destinationRelativeX,
             *update
@@ -176,8 +178,8 @@ open class BubbleAnimationController(
             velY,
             friction,
             SpringForce()
-                .setStiffness(stiffness.toFloat())
-                .setDampingRatio(dampingRatio),  /* destination */
+                .setStiffness(stiffness)
+                .setDampingRatio(dampingRatio),
             null,
             *update
         )
@@ -191,15 +193,17 @@ open class BubbleAnimationController(
         property: ViewProperty,
         vel: Float,
         friction: Float,
-        spring: SpringForce?,
+        spring: SpringForce,
         finalPosition: Float?,
         vararg update: Runnable?
     ) {
         val firstBubbleProperty = BubblePositionProperty(property)
         val currentValue: Float = firstBubbleProperty.getValue(this)
-        val bounds = getAllowableBubblePositionRegion() ?: return
+        val bounds = getAllowableBubblePositionRegion()
+
         val min = if (property == DynamicAnimation.TRANSLATION_X) bounds.left else bounds.top
         val max = if (property == DynamicAnimation.TRANSLATION_X) bounds.right else bounds.bottom
+
         val flingAnimation = FlingAnimation(this, firstBubbleProperty)
         flingAnimation.setFriction(friction)
             .setStartVelocity(vel)
@@ -211,12 +215,17 @@ open class BubbleAnimationController(
                 }
             }
             .addEndListener { animation: DynamicAnimation<*>?, canceled: Boolean, endValue: Float, endVelocity: Float ->
+                if (!canceled) {
+                    springBubbleWithStackFollowing(
+                        property, spring, endVelocity,
+                        finalPosition ?: Math.max(min, Math.min(max, endValue))
+                    )
+                }
             }
         cancelStackPositionAnimation(property)
         bubblePositionAnimations[property] = flingAnimation
         flingAnimation.start()
     }
-
 
     open fun getAllowableBubblePositionRegion(): RectF {
         val allowableRegion = RectF()

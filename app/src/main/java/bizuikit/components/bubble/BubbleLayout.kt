@@ -2,12 +2,16 @@ package bizuikit.components.bubble
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
+import bizuikit.utils.DemoActivity
 
 /**
  * @author: yyf
@@ -80,7 +84,11 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
     fun addBubble(bubble: Bubble) {
         this.bubble = bubble
         bubble.bubbleView?.setOnTouchListener(bubbleTouchListener)
-        bubble.bubbleView?.setOnClickListener(null)
+        bubble.bubbleView?.setOnClickListener {
+            val intent = Intent(context, DemoActivity::class.java)
+            intent.flags = FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
         addView(bubble.bubbleView)
         bubbleAnimationController.setBubblePosition(bubbleAnimationController.getDefaultStartPosition())
     }
