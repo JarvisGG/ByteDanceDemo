@@ -1,22 +1,24 @@
 package bizuikit.components.bubble
 
 import android.os.AsyncTask
+import android.view.View
 
 /**
  * @author: yyf
  * @date: 2020/11/16
  * @desc:
  */
-class Bubble {
+class Bubble(
+    val config: BubbleConfig
+) {
 
-    var bubbleView: BubbleView? = null
+    var bubbleView: View? = null
 
     private var inflationTask: BubbleViewInfoTask? = null
 
-    private var inflateSynchronously = false
+    private var inflateSynchronously = true
 
     fun inflate(layout: BubbleLayout, callback: BubbleViewInfoTask.Callback) {
-
         layout.post {
             if (isBubbleLoading()) {
                 inflationTask?.cancel(true)
@@ -25,9 +27,9 @@ class Bubble {
                  this, layout, callback
             ).apply {
                 if (inflateSynchronously) {
-                    onPostExecute(doInBackground())
+                    onPostExecute(doInBackground(config))
                 } else {
-                    execute()
+                    execute(config)
                 }
             }
         }
@@ -44,9 +46,4 @@ class Bubble {
     fun setViewInfo(viewInfo: BubbleViewInfo) {
         this.bubbleView = viewInfo.bubbleView
     }
-
-    fun update(bubbleData: BubbleData) {
-        // bind data
-    }
-
 }

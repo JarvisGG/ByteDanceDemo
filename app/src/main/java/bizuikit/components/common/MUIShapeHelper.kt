@@ -7,6 +7,7 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewOutlineProvider
+import androidx.annotation.RequiresApi
 import bizuikit.components.common.IMUIShapeLayout.Companion.HIDE_RADIUS_SIDE_BOTTOM
 import bizuikit.components.common.IMUIShapeLayout.Companion.HIDE_RADIUS_SIDE_LEFT
 import bizuikit.components.common.IMUIShapeLayout.Companion.HIDE_RADIUS_SIDE_NONE
@@ -49,6 +50,7 @@ class MUIShapeHelper : IMUIShapeLayout {
     private lateinit var owner: WeakReference<View>
 
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun init(
         view: View,
         context: Context,

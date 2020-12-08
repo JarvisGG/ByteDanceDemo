@@ -15,7 +15,7 @@ import java.lang.reflect.Proxy;
 public class OnComputeInternalInsetsListener implements InvocationHandler {
 
     interface UpdateTouchRect {
-        public Rect onUpdateTouchRect();
+        Rect onUpdateTouchRect();
     }
 
     private UpdateTouchRect touchRect;

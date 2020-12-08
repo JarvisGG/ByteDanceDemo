@@ -52,4 +52,12 @@
 
     <dimen name="text_size_title">20dp</dimen>
 
+
+    <dimen name="floating_dismiss_gradient_height">250dp</dimen>
+    <dimen name="dismiss_circle_size">44dp</dimen>
+    <dimen name="dismiss_circle_radius">120dp</dimen>
+    <dimen name="floating_dismiss_bottom_margin">50dp</dimen>
+
+
+
 </resources>

@@ -51,12 +51,12 @@ inline fun <reified T : View> ViewGroup.inflate(@LayoutRes layoutRes: Int, attac
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot) as T
 }
 
-fun Activity.getToolBarHeight(): Int {
-    val tv = TypedValue()
-    var actionBarHeight = 0
-    if (this.theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-        actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, this.resources.displayMetrics)
-    }
-    return actionBarHeight
+
+/**
+ * 获取状态栏高度
+ */
+fun Context.getStatusBarHeight(): Int {
+    val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+    return resources.getDimensionPixelSize(resourceId)
 }
 

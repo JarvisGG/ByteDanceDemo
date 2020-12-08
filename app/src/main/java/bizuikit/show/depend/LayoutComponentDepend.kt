@@ -37,11 +37,11 @@ class LayoutComponentDepend : ComponentDepend() {
         var radius = 15.dp2px.toInt()
 
         val testLayout = root.findViewById<MUILayout>(R.id.layout_for_test)
-        testLayout.setRadiusAndShadow(
-            radius,
-            shadowElevationDp.dp2px.toInt(),
-            shadowAlpha
-        )
+//        testLayout.setRadiusAndShadow(
+//            radius,
+//            shadowElevationDp.dp2px.toInt(),
+//            shadowAlpha
+//        )
 
         root.findViewById<View>(R.id.shadow_color_red).setOnClickListener {
             testLayout.setShadowColor(-0x10000)

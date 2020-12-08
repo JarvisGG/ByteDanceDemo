@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bizuikit.components.bubble.BubbleView
+<bizuikit.components.layout.MUILayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
-    android:background="@drawable/mui_bubble">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    app:mui_radius="30dp"
+    app:mui_shadowAlpha="0.7"
+    app:mui_shadowElevation="10dp">
 
-</bizuikit.components.bubble.BubbleView>
+    <ImageView
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/mui_ic_ball"/>
+
+</bizuikit.components.layout.MUILayout>
+

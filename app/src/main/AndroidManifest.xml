@@ -3,6 +3,8 @@
     package="com.example.bytedance_demo">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
 
     <application
         android:allowBackup="true"
@@ -20,10 +22,9 @@
         </activity>
         <activity android:name="bizuikit.DetailActivity" />
         <activity android:name="bizuikit.utils.DemoActivity"
-            android:theme="@style/Animation"/>
+            android:excludeFromRecents="true"/>
 
         <service android:name="bizuikit.components.bubble.BubbleService" />
-        <service android:name="bizuikit.show.depend.demo.FloatingBubbleService" />
     </application>
 
 </manifest>

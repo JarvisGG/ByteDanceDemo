@@ -3,7 +3,8 @@ package bizuikit.components.bubble
 import android.content.Context
 import android.os.AsyncTask
 import android.view.LayoutInflater
-import com.example.bytedance_demo.R
+import android.view.View
+
 import java.lang.ref.WeakReference
 
 /**
@@ -15,19 +16,13 @@ class BubbleViewInfoTask(
     private val bubble: Bubble,
     bubbleLayout: BubbleLayout,
     private val callback: Callback
-) : AsyncTask<Void, Void, BubbleViewInfo>() {
+) : AsyncTask<BubbleConfig, Void, BubbleViewInfo>() {
 
     private var bubbleWef: WeakReference<BubbleLayout> = WeakReference(bubbleLayout)
     private var contextWef: WeakReference<Context> = WeakReference(bubbleLayout.context)
 
     interface Callback {
         fun onBubbleViewsReady(bubble: Bubble)
-    }
-
-    public override fun doInBackground(vararg params: Void): BubbleViewInfo {
-        return BubbleViewInfo.populate(
-            contextWef.get(), bubbleWef.get(), bubble
-        )
     }
 
     public override fun onPostExecute(viewInfo: BubbleViewInfo?) {
@@ -38,20 +33,42 @@ class BubbleViewInfoTask(
             }
         }
     }
+
+    public override fun doInBackground(vararg params: BubbleConfig): BubbleViewInfo {
+        return BubbleViewInfo.populate(
+            contextWef.get(), bubbleWef.get(), bubble, params[0]
+        )
+    }
 }
 
 class BubbleViewInfo {
 
-    var bubbleView: BubbleView? = null
+    var bubbleView: View? = null
 
     companion object {
-        fun populate(c: Context?, bubbleLayout: BubbleLayout?, bubble: Bubble): BubbleViewInfo {
+        fun populate(
+            context: Context?,
+            bubbleLayout: BubbleLayout?,
+            bubble: Bubble,
+            config: BubbleConfig
+        ): BubbleViewInfo {
             val info = BubbleViewInfo()
             if (!bubble.isInflated()) {
-                val inflater = c?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater?
+                val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater?
                 info.bubbleView = inflater?.inflate(
-                    R.layout.mui_bubble_view, bubbleLayout, false
-                ) as BubbleView
+                    config.getLayoutId(), bubbleLayout, false
+                )
+                config.onBind(info.bubbleView)
+                info.bubbleView?.addOnAttachStateChangeListener(object :
+                    View.OnAttachStateChangeListener {
+                    override fun onViewAttachedToWindow(v: View?) {
+                        config.onAttachToWindow()
+                    }
+
+                    override fun onViewDetachedFromWindow(v: View?) {
+                        config.onDetachFromWindow()
+                    }
+                })
             }
             return info
         }

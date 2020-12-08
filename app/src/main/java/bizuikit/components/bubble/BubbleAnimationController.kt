@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import androidx.dynamicanimation.animation.*
 import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
+import bizuikit.components.magnetictarget.MagnetizedObject
 import bizuikit.utils.dp2px
 import java.util.*
 import kotlin.math.max
@@ -28,29 +29,45 @@ open class BubbleAnimationController(
         const val SPRING_AFTER_FLING_DAMPING_RATIO = 0.85f
         const val FLING_FRICTION = 2.2f
         const val ESCAPE_VELOCITY = 750f
+
+        private const val FLING_TO_DISMISS_MIN_VELOCITY = 4000f
         const val TAG = "BubbleAnimationController"
     }
 
-    private val bubbleBitmapSize = 0
+    private var bubble: Bubble? = null
 
-    private val bubbleSize = 50.dp2px
+    private fun bubbleView() =
+        bubble?.bubbleView
 
-    private val stackStartingVerticalOffset = 0
+    /**
+     * bubble 大小
+     */
+    private fun bubbleSize() = bubbleView()?.width?.toFloat() ?: 0f
 
-    private var springToTouchOnNextMotionEvent = true
-
+    /**
+     * bubble 位置
+     */
     private val bubblePosition = PointF((-1).toFloat(), (-1).toFloat())
 
+    /**
+     * bubble XY 轴动画集
+     */
     private val bubblePositionAnimations = HashMap<ViewProperty, DynamicAnimation<*>>()
+
+    /**
+     * 默认左对齐 & Y 轴位置
+     */
+    private val startingVerticalOffset = 100.dp2px
 
     private val context: Context by lazy {
         layout.context
     }
 
-    private val statusBarHeight by lazy {
-        getStatusBarHeight(context)
+    fun bindBubble(bubble: Bubble) {
+        this.bubble = bubble
     }
-
+    
+    private var springToTouchOnNextMotionEvent = true
     fun moveBubbleFromTouch(x: Float, y: Float, vararg update: Runnable?) {
         if (springToTouchOnNextMotionEvent) {
             springBubble(x, y, DEFAULT_STIFFNESS.toFloat(), *update)
@@ -69,7 +86,7 @@ open class BubbleAnimationController(
     open fun springBubble(
         destinationX: Float, destinationY: Float, stiffness: Float, vararg update: Runnable?
     ) {
-        springBubbleWithStackFollowing(
+        springBubbleFollowing(
             DynamicAnimation.TRANSLATION_X,
             SpringForce()
                 .setStiffness(stiffness)
@@ -78,7 +95,7 @@ open class BubbleAnimationController(
             destinationX,
             *update
         )
-        springBubbleWithStackFollowing(
+        springBubbleFollowing(
             DynamicAnimation.TRANSLATION_Y,
             SpringForce()
                 .setStiffness(stiffness)
@@ -89,7 +106,7 @@ open class BubbleAnimationController(
         )
     }
 
-    protected open fun springBubbleWithStackFollowing(
+    protected open fun springBubbleFollowing(
         property: ViewProperty, spring: SpringForce,
         vel: Float, finalPosition: Float, vararg update: Runnable?
     ) {
@@ -109,13 +126,13 @@ open class BubbleAnimationController(
             }
             .setStartVelocity(vel)
 
-        cancelStackPositionAnimation(property)
+        cancelPositionAnimation(property)
         bubblePositionAnimations[property] = springAnimation
         springAnimation.animateToFinalPosition(finalPosition)
     }
 
 
-    private fun moveBubbleWithStackFollowing(
+    private fun moveBubbleFollowing(
         property: ViewProperty, value: Float
     ) {
 
@@ -125,28 +142,17 @@ open class BubbleAnimationController(
             bubblePosition.y = value
         }
         if (layout.childCount > 0) {
-            property.setValue(layout.getChildAt(0), value)
-        }
-    }
-
-    fun cancelBubblePositionAnimations() {
-        cancelStackPositionAnimation(DynamicAnimation.TRANSLATION_X)
-        cancelStackPositionAnimation(DynamicAnimation.TRANSLATION_Y)
-    }
-
-    private fun cancelStackPositionAnimation(property: ViewProperty) {
-        if (bubblePositionAnimations.containsKey(property)) {
-            bubblePositionAnimations[property]?.cancel()
+            property.setValue(bubbleView(), value)
         }
     }
 
     fun flingBubbleThenSpringToEdge(x: Float, velX: Float, velY: Float, vararg update: Runnable?): Float {
-        val stackOnLeftSide: Boolean = x - bubbleBitmapSize / 2 < layout.width / 2
-        val stackShouldFlingLeft = if (stackOnLeftSide)
+        val isLeftSide: Boolean = x < layout.width / 2
+        val shouldFlingLeft = if (isLeftSide)
             velX < ESCAPE_VELOCITY else velX < -ESCAPE_VELOCITY
 
-        val stackBounds = getAllowableBubblePositionRegion()
-        val destinationRelativeX = if (stackShouldFlingLeft) stackBounds.left else stackBounds.right
+        val bounds = getAllowableBubblePositionRegion()
+        val destinationRelativeX = if (shouldFlingLeft) bounds.left else bounds.right
         if (layout.childCount == 0) {
             return destinationRelativeX
         }
@@ -158,11 +164,11 @@ open class BubbleAnimationController(
         val minimumVelocityToReachEdge = (destinationRelativeX - x) * (friction * 4.8f)
 
         val startXVelocity =
-            if (stackShouldFlingLeft) min(minimumVelocityToReachEdge, velX) else max(
+            if (shouldFlingLeft) min(minimumVelocityToReachEdge, velX) else max(
                 minimumVelocityToReachEdge,
                 velX
             )
-        flingThenSpringBubbleWithStackFollowing(
+        flingThenSpringBubbleFollowing(
             DynamicAnimation.TRANSLATION_X,
             startXVelocity,
             friction,
@@ -173,7 +179,7 @@ open class BubbleAnimationController(
             *update
         )
 
-        flingThenSpringBubbleWithStackFollowing(
+        flingThenSpringBubbleFollowing(
             DynamicAnimation.TRANSLATION_Y,
             velY,
             friction,
@@ -189,7 +195,7 @@ open class BubbleAnimationController(
 
     }
 
-    protected open fun flingThenSpringBubbleWithStackFollowing(
+    protected open fun flingThenSpringBubbleFollowing(
         property: ViewProperty,
         vel: Float,
         friction: Float,
@@ -216,23 +222,34 @@ open class BubbleAnimationController(
             }
             .addEndListener { animation: DynamicAnimation<*>?, canceled: Boolean, endValue: Float, endVelocity: Float ->
                 if (!canceled) {
-                    springBubbleWithStackFollowing(
+                    springBubbleFollowing(
                         property, spring, endVelocity,
                         finalPosition ?: Math.max(min, Math.min(max, endValue))
                     )
                 }
             }
-        cancelStackPositionAnimation(property)
+        cancelPositionAnimation(property)
         bubblePositionAnimations[property] = flingAnimation
         flingAnimation.start()
+    }
+
+    fun cancelBubblePositionAnimations() {
+        cancelPositionAnimation(DynamicAnimation.TRANSLATION_X)
+        cancelPositionAnimation(DynamicAnimation.TRANSLATION_Y)
+    }
+
+    private fun cancelPositionAnimation(property: ViewProperty) {
+        if (bubblePositionAnimations.containsKey(property)) {
+            bubblePositionAnimations[property]?.cancel()
+        }
     }
 
     open fun getAllowableBubblePositionRegion(): RectF {
         val allowableRegion = RectF()
         allowableRegion.left = 0f
-        allowableRegion.right = layout.width - bubbleSize
-        allowableRegion.top = statusBarHeight.toFloat()
-        allowableRegion.bottom = layout.height - bubbleSize
+        allowableRegion.right = layout.width - bubbleSize()
+        allowableRegion.top = 0f
+        allowableRegion.bottom = layout.height - bubbleSize()
         return allowableRegion
     }
 
@@ -240,31 +257,23 @@ open class BubbleAnimationController(
         val isRtl = (layout.resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL)
         return PointF(
             if (isRtl) getAllowableBubblePositionRegion().right else getAllowableBubblePositionRegion().left,
-            getAllowableBubblePositionRegion().top + stackStartingVerticalOffset
+            getAllowableBubblePositionRegion().top + startingVerticalOffset
         )
     }
 
     open fun setBubblePosition(pos: PointF) {
         bubblePosition.set(pos.x, pos.y)
-        layout.getChildAt(0).translationX = pos.x
-        layout.getChildAt(0).translationY = pos.y
-    }
-
-    /**
-     * 获取状态栏高度
-     */
-    private fun getStatusBarHeight(context: Context): Int {
-        val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
-        return context.resources.getDimensionPixelSize(resourceId)
+        bubbleView()?.translationX = pos.x
+        bubbleView()?.translationY = pos.y
     }
 
     fun getBoundsOnScreen(outRect: Rect) {
-        ReflectionUtils.getBoundsOnScreen(layout.getChildAt(0), outRect)
-        outRect.top -= statusBarHeight
-        outRect.left -= 0
-        outRect.right += 0
-        outRect.bottom -= statusBarHeight
-        Log.e(BubbleLayout.TAG, outRect.flattenToString())
+        val location = IntArray(2)
+        bubbleView()?.getLocationInWindow(location)
+        outRect.left = location[0]
+        outRect.top = location[1]
+        outRect.right = outRect.left + bubbleSize().toInt()
+        outRect.bottom = outRect.top + bubbleSize().toInt()
     }
 
     inner class BubblePositionProperty(
@@ -273,11 +282,49 @@ open class BubbleAnimationController(
 
 
         override fun getValue(`object`: BubbleAnimationController?): Float {
-            return if (layout.childCount > 0) property.getValue(layout.getChildAt(0)) else 0f
+            return if (layout.childCount > 0) property.getValue(bubbleView()) else 0f
         }
 
         override fun setValue(`object`: BubbleAnimationController?, value: Float) {
-            moveBubbleWithStackFollowing(property, value)
+            moveBubbleFollowing(property, value)
         }
+    }
+
+
+    private lateinit var magnetizedObject: MagnetizedObject<BubbleAnimationController>
+
+    open fun getMagnetizedStack(
+        target: MagnetizedObject.MagneticTarget
+    ): MagnetizedObject<BubbleAnimationController> {
+        if (!::magnetizedObject.isInitialized) {
+            magnetizedObject = object : MagnetizedObject<BubbleAnimationController>(
+                context, this@BubbleAnimationController,
+                BubblePositionProperty(
+                    DynamicAnimation.TRANSLATION_X
+                ),
+                BubblePositionProperty(
+                    DynamicAnimation.TRANSLATION_Y
+                )
+            ) {
+                override fun getWidth(underlyingObject: BubbleAnimationController): Float {
+                    return bubbleSize()
+                }
+
+                override fun getHeight(underlyingObject: BubbleAnimationController): Float {
+                    return bubbleSize()
+                }
+
+                override fun getLocationInWindow(
+                    underlyingObject: BubbleAnimationController,
+                    loc: IntArray
+                ) {
+                    loc[0] = bubblePosition.x.toInt()
+                    loc[1] = bubblePosition.y.toInt()
+                }
+            }
+            magnetizedObject.addTarget(target)
+            magnetizedObject.flingToTargetMinVelocity = FLING_TO_DISMISS_MIN_VELOCITY
+        }
+        return magnetizedObject
     }
 }

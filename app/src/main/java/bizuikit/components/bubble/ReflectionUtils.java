@@ -1,7 +1,5 @@
 package bizuikit.components.bubble;
 
-import android.graphics.Rect;
-import android.view.View;
 import android.view.ViewTreeObserver;
 
 import java.lang.reflect.Field;
@@ -14,7 +12,6 @@ import java.util.ArrayList;
 public class ReflectionUtils {
 
     private ReflectionUtils() {
-
     }
 
     public static void removeOnComputeInternalInsetsListener(ViewTreeObserver viewTree) {
@@ -52,20 +49,4 @@ public class ReflectionUtils {
             e.printStackTrace();
         }
     }
-
-    public static void getBoundsOnScreen(View view, Object object) {
-        if (view == null) {
-            return;
-        }
-        try {
-            Class<?> classes[] = { Rect.class };
-            Class<?> clazz = View.class;
-            clazz.getDeclaredMethod("getBoundsOnScreen", classes)
-                    .invoke(view, object);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
 }

@@ -3,7 +3,6 @@ package bizuikit.components.bubble
 import android.content.Context
 import android.graphics.PixelFormat
 import android.os.Build
-import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 
@@ -30,36 +29,32 @@ open class BubbleController(
     }
     var bubble: Bubble? = null
 
-    /**
-     * 添加气泡
-     */
-    fun addBubble(bubble: Bubble, bubbleData: BubbleData) {
+    fun registerBubbleConfig(config: BubbleConfig) {
         if (this.bubble != null) {
             throw Throwable("controller already add Bubble!")
         }
         ensureBubbleViewCreated()
-        bubble.inflate(layout, object : BubbleViewInfoTask.Callback {
+        bubble = Bubble(config)
+        bubble?.inflate(layout, object : BubbleViewInfoTask.Callback {
             override fun onBubbleViewsReady(bubble: Bubble) {
                 layout.addBubble(bubble)
-                updateBubble(bubbleData)
             }
         })
     }
 
-    /**
-     * 更新气泡
-     */
-    fun updateBubble(bubbleData: BubbleData) {
-        bubble?.update(bubbleData)
-    }
 
     private fun ensureBubbleViewCreated() {
         try {
             vm.addView(fakeView, getDefaultWindowParams())
-            vm.addView(layout, getDefaultWindowParams(
-                WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.MATCH_PARENT
-            ))
+            layout.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+            vm.addView(
+                layout, getDefaultWindowParams(
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    WindowManager.LayoutParams.MATCH_PARENT
+                )
+            )
         } catch (e: IllegalStateException) {
             e.printStackTrace()
         }
@@ -88,12 +83,21 @@ open class BubbleController(
             return WindowManager.LayoutParams(
                 width,
                 height,
-                if (Build.VERSION.SDK_INT >= 26) WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY else WindowManager.LayoutParams.TYPE_PHONE,
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+                } else {
+                    WindowManager.LayoutParams.TYPE_PHONE
+                },
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                        or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
-                        or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                        or WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
+                        or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
                 PixelFormat.TRANSLUCENT
-            )
+            ).apply {
+                softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+                }
+            }
         }
 
     }
