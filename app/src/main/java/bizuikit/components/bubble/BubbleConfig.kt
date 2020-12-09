@@ -1,5 +1,6 @@
 package bizuikit.components.bubble
 
+import android.graphics.PointF
 import android.view.View
 
 /**
@@ -11,15 +12,27 @@ abstract class BubbleConfig {
 
     abstract fun getLayoutId(): Int
 
-    abstract fun onBind(view: View?)
+    open fun onBind(view: View?) {}
 
-    open fun onDown() {}
+    open fun onDown(v: View) {}
 
-    open fun onMove(x: Float, y: Float) {}
+    open fun onMove(v: View, x: Float, y: Float) {}
 
-    open fun onUp() {}
+    open fun onUp(v: View) {}
 
-    open fun onAttachToWindow() {}
+    open fun onAttachToWindow(v: View) {}
 
-    open fun onDetachFromWindow() {}
+    open fun onDetachFromWindow(v: View) {}
+
+    open fun getStartMargin() = 0f
+
+    open fun getEndMargin() = 0f
+
+    open fun getTopMargin() = 0f
+
+    open fun getBottomMargin() = 0f
+
+    open fun getDefaultPosition(): PointF {
+        return PointF(0f, 0f)
+    }
 }

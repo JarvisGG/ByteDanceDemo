@@ -61,12 +61,12 @@ class BubbleViewInfo {
                 config.onBind(info.bubbleView)
                 info.bubbleView?.addOnAttachStateChangeListener(object :
                     View.OnAttachStateChangeListener {
-                    override fun onViewAttachedToWindow(v: View?) {
-                        config.onAttachToWindow()
+                    override fun onViewAttachedToWindow(v: View) {
+                        config.onAttachToWindow(v)
                     }
 
-                    override fun onViewDetachedFromWindow(v: View?) {
-                        config.onDetachFromWindow()
+                    override fun onViewDetachedFromWindow(v: View) {
+                        config.onDetachFromWindow(v)
                     }
                 })
             }

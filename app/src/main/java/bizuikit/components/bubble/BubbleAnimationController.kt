@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
-import android.util.Log
 import android.view.View
 import androidx.dynamicanimation.animation.*
 import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
@@ -53,11 +52,6 @@ open class BubbleAnimationController(
      * bubble XY 轴动画集
      */
     private val bubblePositionAnimations = HashMap<ViewProperty, DynamicAnimation<*>>()
-
-    /**
-     * 默认左对齐 & Y 轴位置
-     */
-    private val startingVerticalOffset = 100.dp2px
 
     private val context: Context by lazy {
         layout.context
@@ -246,18 +240,18 @@ open class BubbleAnimationController(
 
     open fun getAllowableBubblePositionRegion(): RectF {
         val allowableRegion = RectF()
-        allowableRegion.left = 0f
-        allowableRegion.right = layout.width - bubbleSize()
-        allowableRegion.top = 0f
-        allowableRegion.bottom = layout.height - bubbleSize()
+        allowableRegion.left = bubble?.config?.getStartMargin() ?: 0f
+        allowableRegion.right = layout.width - bubbleSize() - (bubble?.config?.getEndMargin() ?: 0f)
+        allowableRegion.top = bubble?.config?.getTopMargin() ?: 0f
+        allowableRegion.bottom = layout.height - bubbleSize() - (bubble?.config?.getBottomMargin() ?: 0f)
         return allowableRegion
     }
 
     fun getDefaultStartPosition(): PointF {
         val isRtl = (layout.resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL)
         return PointF(
-            if (isRtl) getAllowableBubblePositionRegion().right else getAllowableBubblePositionRegion().left,
-            getAllowableBubblePositionRegion().top + startingVerticalOffset
+            ((if (isRtl) getAllowableBubblePositionRegion().right else getAllowableBubblePositionRegion().left) + (bubble?.config?.getDefaultPosition()?.x ?: 0f)),
+            getAllowableBubblePositionRegion().top + (bubble?.config?.getDefaultPosition()?.y ?: 0.dp2px)
         )
     }
 

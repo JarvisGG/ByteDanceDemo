@@ -82,10 +82,11 @@ abstract class RelativeTouchListener : View.OnTouchListener {
             }
 
             MotionEvent.ACTION_UP -> {
+                velocityTracker.computeCurrentVelocity(1000 /* units */)
+                onUp(v, ev, viewPositionOnTouchDown.x, viewPositionOnTouchDown.y, dx, dy,
+                    velocityTracker.xVelocity, velocityTracker.yVelocity)
                 if (movedEnough) {
-                    velocityTracker.computeCurrentVelocity(1000 /* units */)
-                    onUp(v, ev, viewPositionOnTouchDown.x, viewPositionOnTouchDown.y, dx, dy,
-                        velocityTracker.xVelocity, velocityTracker.yVelocity)
+
                 } else if (!performedLongClick) {
                     v.performClick()
                 } else {

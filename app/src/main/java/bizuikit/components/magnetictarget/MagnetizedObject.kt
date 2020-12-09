@@ -18,18 +18,14 @@ package bizuikit.components.magnetictarget
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.PointF
-import android.os.Build
-import android.os.VibrationEffect
 import android.os.Vibrator
-import android.util.Log
 import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.dynamicanimation.animation.FloatPropertyCompat
+import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
-import bizuikit.components.bubble.BubbleAnimationController
-import bizuikit.components.bubble.PhysicsAnimator
 import kotlin.math.abs
 import kotlin.math.hypot
 
@@ -66,7 +62,15 @@ abstract class MagnetizedObject<T : Any>(
         fun onReleasedInTarget(target: MagneticTarget)
     }
 
-    private val animator: PhysicsAnimator<T> = PhysicsAnimator.getInstance(underlyingObject)
+    private val animatorX by lazy {
+        SpringAnimation(underlyingObject, xProperty)
+    }
+
+    private val animatorY by lazy {
+        SpringAnimation(underlyingObject, yProperty)
+    }
+
+
     private val objectLocationOnScreen = IntArray(2)
 
     private val associatedTargets = ArrayList<MagneticTarget>()
@@ -85,47 +89,11 @@ abstract class MagnetizedObject<T : Any>(
 
     lateinit var magnetListener: MagnetListener
 
-    var physicsAnimatorUpdateListener: PhysicsAnimator.UpdateListener<T>? = null
-
-    var physicsAnimatorEndListener: PhysicsAnimator.EndListener<T>? = null
-
     var animateStuckToTarget: (MagneticTarget, Float, Float, Boolean, (() -> Unit)?) -> Unit =
             ::animateStuckToTargetInternal
 
     var flingToTargetEnabled = true
 
-    /**
-     * If fling to target is enabled, forcefully flinging the object towards a target will cause
-     * it to be attracted to the target and then released immediately, despite never being dragged
-     * within the magnetic field.
-     *
-     * This sets the width of the area considered 'near' enough a target to be considered a fling,
-     * in terms of percent of the target view's width. For example, setting this to 3f means that
-     * flings towards a 100px-wide target will be considered 'near' enough if they're towards the
-     * 300px-wide area around the target.
-     *
-     * Flings whose trajectory intersects the area will be attracted and released - even if the
-     * target view itself isn't intersected:
-     *
-     * |             |
-     * |           0 |
-     * |          /  |
-     * |         /   |
-     * |      X /    |
-     * |.....###.....|
-     *
-     *
-     * Flings towards the target whose trajectories do not intersect the area will be treated as
-     * normal flings and the magnet will leave the object alone:
-     *
-     * |             |
-     * |             |
-     * |   0         |
-     * |  /          |
-     * | /    X      |
-     * |.....###.....|
-     *
-     */
     var flingToTargetWidthPercent = 3f
 
     var flingToTargetMinVelocity = 4000f
@@ -134,20 +102,14 @@ abstract class MagnetizedObject<T : Any>(
 
     var stickToTargetMaxXVelocity = 2000f
 
-
-    var springConfig = PhysicsAnimator.SpringConfig(
-        SpringForce.STIFFNESS_MEDIUM, SpringForce.DAMPING_RATIO_NO_BOUNCY
-    )
-
-    var flungIntoTargetSpringConfig = springConfig
-
     fun addTarget(target: MagneticTarget) {
         associatedTargets.add(target)
         target.updateLocationOnScreen()
     }
 
     fun addTarget(target: View, magneticFieldRadiusPx: Int): MagneticTarget {
-        return MagneticTarget(target, magneticFieldRadiusPx).also { addTarget(it) }
+        return MagneticTarget(target, magneticFieldRadiusPx).also {
+            addTarget(it) }
     }
 
     fun removeTarget(target: MagneticTarget) {
@@ -180,6 +142,7 @@ abstract class MagnetizedObject<T : Any>(
             }
         }
 
+        // 筛选进入的第一个磁场对象
         val targetObjectIsInMagneticFieldOf = associatedTargets.firstOrNull { target ->
             val distanceFromTargetCenter = hypot(
                 ev.rawX - target.centerOnScreen.x,
@@ -188,19 +151,23 @@ abstract class MagnetizedObject<T : Any>(
             distanceFromTargetCenter < target.magneticFieldRadiusPx
         }
 
+        // 是否第一次被吸附
         val objectNewlyStuckToTarget =
                 !objectStuckToTarget && targetObjectIsInMagneticFieldOf != null
 
+        // 是否被其他吸附
         val objectMovedIntoDifferentTarget =
                 objectStuckToTarget &&
                         targetObjectIsInMagneticFieldOf != null &&
                         targetObjectIsStuckTo != targetObjectIsInMagneticFieldOf
 
+        // 总之是被吸附
         if (objectNewlyStuckToTarget || objectMovedIntoDifferentTarget) {
             velocityTracker.computeCurrentVelocity(1000)
             val velX = velocityTracker.xVelocity
             val velY = velocityTracker.yVelocity
 
+            // 只要速度够快，你就抓不住我
             if (objectNewlyStuckToTarget && abs(velX) > stickToTargetMaxXVelocity) {
                 return false
             }
@@ -209,11 +176,11 @@ abstract class MagnetizedObject<T : Any>(
             cancelAnimations()
             magnetListener.onStuckToTarget(targetObjectIsInMagneticFieldOf!!)
             animateStuckToTarget(targetObjectIsInMagneticFieldOf, velX, velY, false, null)
-
             vibrateIfEnabled()
-        } else if (targetObjectIsInMagneticFieldOf == null && objectStuckToTarget) {
+        }
+        // 是否脱离当前吸附区域
+        else if (targetObjectIsInMagneticFieldOf == null && objectStuckToTarget) {
             velocityTracker.computeCurrentVelocity(1000)
-
             cancelAnimations()
             magnetListener.onUnstuckFromTarget(
                 targetObjectIsStuckTo!!, velocityTracker.xVelocity, velocityTracker.yVelocity,
@@ -265,13 +232,13 @@ abstract class MagnetizedObject<T : Any>(
             return false
         }
 
+        // 进入吸附区域，吃掉所有 touch 事件
         return objectStuckToTarget
     }
 
-    /** Plays the given vibration effect if haptics are enabled. */
     @SuppressLint("MissingPermission")
     private fun vibrateIfEnabled() {
-        vibrator.vibrate(50)
+        vibrator.vibrate(40)
     }
 
     private fun addMovement(event: MotionEvent) {
@@ -297,33 +264,27 @@ abstract class MagnetizedObject<T : Any>(
         val yDiff = target.centerOnScreen.y -
                 getHeight(underlyingObject) / 2f - objectLocationOnScreen[1]
 
-        val springConfig = if (flung) flungIntoTargetSpringConfig else springConfig
-
         cancelAnimations()
 
-        animator
-                .spring(
-                    xProperty, xProperty.getValue(underlyingObject) + xDiff, velX,
-                    springConfig
-                )
-                .spring(
-                    yProperty, yProperty.getValue(underlyingObject) + yDiff, velY,
-                    springConfig
-                )
-
-        if (physicsAnimatorUpdateListener != null) {
-            animator.addUpdateListener(physicsAnimatorUpdateListener!!)
+        animatorX.spring = SpringForce().apply {
+            stiffness = SpringForce.STIFFNESS_MEDIUM
+            dampingRatio = SpringForce.DAMPING_RATIO_LOW_BOUNCY
+            finalPosition = xProperty.getValue(underlyingObject) + xDiff
         }
+        animatorX.setStartVelocity(velX)
+        animatorX.start()
+        animatorX.addEndListener { _, _, _, _ -> after?.invoke() }
 
-        if (physicsAnimatorEndListener != null) {
-            animator.addEndListener(physicsAnimatorEndListener!!)
+        animatorY.spring = SpringForce().apply {
+            stiffness = SpringForce.STIFFNESS_MEDIUM
+            dampingRatio = SpringForce.DAMPING_RATIO_LOW_BOUNCY
+            finalPosition = yProperty.getValue(underlyingObject) + yDiff
         }
+        animatorY.setStartVelocity(velY)
+        animatorY.start()
 
-        if (after != null) {
-            animator.withEndActions(after)
-        }
 
-        animator.start()
+
     }
 
     private fun isForcefulFlingTowardsTarget(
@@ -361,7 +322,8 @@ abstract class MagnetizedObject<T : Any>(
     }
 
     internal fun cancelAnimations() {
-        animator.cancel(xProperty, yProperty)
+        animatorX.cancel()
+        animatorY.cancel()
     }
 
     internal fun updateTargetViews() {

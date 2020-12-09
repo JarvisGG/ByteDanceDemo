@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.*
 import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.ViewOutlineProvider
 import androidx.annotation.RequiresApi
@@ -183,11 +184,6 @@ class MUIShapeHelper : IMUIShapeLayout {
                         outline.setRoundRect(left, top, right, bottom, radius)
                         return
                     }
-                    var shadowAlpha: Float = shadowAlpha
-                    if (shadowElevation == 0) {
-                        shadowAlpha = 1f
-                    }
-                    outline.alpha = shadowAlpha
                     if (radius <= 0) {
                         outline.setRect(left, top, right, bottom)
                     } else {
@@ -268,11 +264,10 @@ class MUIShapeHelper : IMUIShapeLayout {
     private fun invalidateOutline() {
         if (useFeature()) {
             val owner: View = owner.get() ?: return
-            if (shadowElevation == 0) {
-                owner.elevation = 0f
-            } else {
-                owner.elevation = shadowElevation.toFloat()
-            }
+            owner.elevation = shadowElevation.toFloat() * shadowAlpha
+
+            Log.e("MUIShapeHelper", "elevation : ${owner.elevation}, alpha : $shadowAlpha")
+
             owner.invalidateOutline()
         }
     }

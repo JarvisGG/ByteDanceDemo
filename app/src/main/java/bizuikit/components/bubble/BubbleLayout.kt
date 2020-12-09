@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Rect
 import android.graphics.drawable.TransitionDrawable
+import android.os.Build
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.MotionEvent
+import android.view.TouchDelegate
 import android.view.View
 import android.widget.FrameLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
+import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import bizuikit.components.magnetictarget.MagnetizedObject
 import com.example.bytedance_demo.R
@@ -44,16 +47,16 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
         BubbleDismissView(context)
     }
 
-    private var showingDismiss = false
+    private var showingDismissCircle = false
 
-    private val dismissAnimator by lazy {
-        PhysicsAnimator.getInstance<View>(dismissCircle)
+    private var showingDismissBubble = false
+
+    private val dismissCircleAnimator by lazy {
+        SpringAnimation(dismissCircle, DynamicAnimation.TRANSLATION_Y)
     }
 
-    private val dismissSpring by lazy {
-        PhysicsAnimator.SpringConfig(
-            SpringForce.STIFFNESS_LOW, SpringForce.DAMPING_RATIO_LOW_BOUNCY
-        )
+    private val dismissBubbleAnimator by lazy {
+        SpringAnimation(bubble.bubbleView, DynamicAnimation.TRANSLATION_Y)
     }
 
     private var magnetizedObject: MagnetizedObject<*>? = null
@@ -108,7 +111,6 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
         dismissContainer.addView(dismissCircle)
 
         addView(dismissContainer)
-        dismissContainer.bringToFront()
 
         // 磁场范围
         val dismissRadius = resources.getDimensionPixelSize(R.dimen.dismiss_circle_radius)
@@ -117,32 +119,58 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
     }
 
     private fun springInDismissTargetMaybe() {
-        if (showingDismiss) {
+        if (showingDismissCircle) {
             return
         }
-        showingDismiss = true
-        dismissContainer.bringToFront()
-//        dismissContainer.setZ(Short.MAX_VALUE - 1.toFloat())
+        showingDismissCircle = true
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            dismissContainer.z = Short.MAX_VALUE - 1.toFloat()
+        }
         dismissContainer.visibility = VISIBLE
         (dismissContainer.background as TransitionDrawable).startTransition(
             DISMISS_TRANSITION_DURATION_MS
         )
-        dismissAnimator.cancel()
-        dismissAnimator.spring(DynamicAnimation.TRANSLATION_Y, 0f, dismissSpring).start()
+        dismissCircleAnimator.cancel()
+        dismissCircleAnimator.spring = SpringForce().apply {
+            stiffness = SpringForce.STIFFNESS_LOW
+            dampingRatio = SpringForce.DAMPING_RATIO_LOW_BOUNCY
+            finalPosition = 0f
+        }
+        dismissCircleAnimator.start()
     }
 
-    private fun hideDismissTarget() {
-        if (!showingDismiss) {
+    private fun hideDismissCircle() {
+        if (!showingDismissCircle) {
             return
         }
-        showingDismiss = false
+        showingDismissCircle = false
         (dismissContainer.background as TransitionDrawable).reverseTransition(
             DISMISS_TRANSITION_DURATION_MS
         )
-        dismissAnimator.spring(
-            DynamicAnimation.TRANSLATION_Y, dismissContainer.height.toFloat(),
-            dismissSpring
-        ).withEndActions({ dismissContainer.run { visibility = INVISIBLE } }).start()
+        dismissCircleAnimator.spring = SpringForce().apply {
+            stiffness = SpringForce.STIFFNESS_LOW
+            dampingRatio = SpringForce.DAMPING_RATIO_LOW_BOUNCY
+            finalPosition = dismissContainer.height.toFloat()
+        }
+        dismissCircleAnimator.addEndListener { _, _, _, _ ->
+        }
+        dismissCircleAnimator.start()
+    }
+
+    private fun hideDismissBubble() {
+        if (showingDismissBubble) {
+            return
+        }
+        showingDismissBubble = true
+        dismissBubbleAnimator.spring = SpringForce().apply {
+            stiffness = SpringForce.STIFFNESS_LOW
+            dampingRatio = SpringForce.DAMPING_RATIO_LOW_BOUNCY
+            finalPosition = bubble.bubbleView!!.translationY + dismissContainer.height.toFloat()
+        }
+        dismissBubbleAnimator.addEndListener { _, _, _, _ ->
+        }
+        dismissBubbleAnimator.start()
+
     }
 
     private fun passEventToMagnetizedObject(event: MotionEvent): Boolean {
@@ -151,7 +179,6 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
 
     private val stackMagnetListener = object : MagnetizedObject.MagnetListener {
         override fun onStuckToTarget(target: MagnetizedObject.MagneticTarget) {
-//            animateDesaturateAndDarken(bubbleView, true)
         }
 
         override fun onUnstuckFromTarget(
@@ -160,11 +187,11 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
             velY: Float,
             wasFlungOut: Boolean
         ) {
-//            animateDesaturateAndDarken(bubbleView, false)
         }
 
         override fun onReleasedInTarget(target: MagnetizedObject.MagneticTarget) {
-            hideDismissTarget()
+            hideDismissBubble()
+            hideDismissCircle()
         }
 
     }
@@ -207,11 +234,13 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
     private fun bindBubbleView() {
         bubbleView?.setOnTouchListener(bubbleTouchListener)
         addView(bubbleView)
+        dismissContainer.bringToFront()
     }
 
     private val bubbleTouchListener = object : RelativeTouchListener() {
         override fun onDown(v: View, ev: MotionEvent): Boolean {
-            bubble.config.onDown()
+            bubble.config.onDown(v)
+            showingDismissBubble = false
             bubbleAnimationController.cancelBubblePositionAnimations()
 
             if (magneticTarget != null) {
@@ -234,7 +263,7 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
             if (passEventToMagnetizedObject(ev)) {
                 return
             }
-            bubble.config.onMove(viewInitialX + dx, viewInitialY + dy)
+            bubble.config.onMove(v, viewInitialX + dx, viewInitialY + dy)
             bubbleAnimationController.moveBubbleFromTouch(viewInitialX + dx, viewInitialY + dy)
         }
 
@@ -246,11 +275,11 @@ class BubbleLayout: FrameLayout, OnComputeInternalInsetsListener.UpdateTouchRect
             if (passEventToMagnetizedObject(ev)) {
                 return
             }
-            bubble.config.onUp()
+            bubble.config.onUp(v)
             bubbleAnimationController.flingBubbleThenSpringToEdge(
                 viewInitialX + dx, velX, velY
             )
-            hideDismissTarget()
+            hideDismissCircle()
         }
     }
 

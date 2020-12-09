@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:background="#fff"
     app:mui_radius="30dp"
-    app:mui_shadowAlpha="0.7"
-    app:mui_shadowElevation="10dp">
+    app:mui_shadowAlpha="1"
+    app:mui_shadowElevation="5dp">
 
     <ImageView
         android:layout_width="44dp"
