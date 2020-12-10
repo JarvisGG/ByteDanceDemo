@@ -20,6 +20,8 @@ abstract class BubbleConfig {
 
     open fun onUp(v: View) {}
 
+    open fun onClick() {}
+
     open fun onAttachToWindow(v: View) {}
 
     open fun onDetachFromWindow(v: View) {}

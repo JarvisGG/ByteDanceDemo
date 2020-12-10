@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bizuikit.components.layout.MUILayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#fff"
-    app:mui_radius="30dp"
-    app:mui_shadowAlpha="1"
-    app:mui_shadowElevation="5dp">
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
-    <ImageView
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:src="@drawable/mui_ic_ball"/>
+    <bizuikit.components.layout.MUILayout
+        android:id="@+id/ml_bubble_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:alpha="0"
+        app:mui_radius="30dp"
+        app:mui_shadowAlpha="1"
+        app:mui_shadowElevation="5dp">
 
-</bizuikit.components.layout.MUILayout>
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:src="@drawable/mui_ic_ball"
+            tools:ignore="ContentDescription" />
+
+    </bizuikit.components.layout.MUILayout>
+
+    <bizuikit.components.badge.MUIBadge
+        android:id="@+id/ml_bubble_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="-4dp"
+        android:layout_marginTop="-2dp"
+        android:alpha="0"
+        app:mui_count="10"
+        app:mui_hasNum="true"/>
+
+</FrameLayout>
+
 

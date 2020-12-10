@@ -3,6 +3,7 @@ package bizuikit.components.badge
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.TextView
 import bizuikit.components.layout.MUILayout
 import bizuikit.utils.inflate
@@ -13,7 +14,7 @@ import com.example.bytedance_demo.R
  * @date: 2020/10/10
  * @desc:
  */
-class MUIBadge : MUILayout {
+class MUIBadge : FrameLayout {
 
     private var count = 0
     private var hasNum = false

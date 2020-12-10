@@ -40,6 +40,12 @@ open class BubbleController(
                 layout.addBubble(bubble)
             }
         })
+        layout.registerBubbleCallback(object : BubbleLayout.BubbleCallback {
+            override fun onDismiss() {
+                vm.removeView(layout)
+                vm.removeView(fakeView)
+            }
+        })
     }
 
 

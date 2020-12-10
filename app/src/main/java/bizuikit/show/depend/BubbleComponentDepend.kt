@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.view.ViewGroup
 import bizuikit.ComponentDepend
-import bizuikit.components.bubble.BubbleService
+import bizuikit.show.depend.bubble.BubbleService
 import bizuikit.components.bubble.FloatingBubblePermissions
 import bizuikit.components.button.MUIButton
 import com.example.bytedance_demo.R

@@ -24,7 +24,7 @@
         <activity android:name="bizuikit.utils.DemoActivity"
             android:excludeFromRecents="true"/>
 
-        <service android:name="bizuikit.components.bubble.BubbleService" />
+        <service android:name="bizuikit.show.depend.bubble.BubbleService" />
     </application>
 
 </manifest>
