@@ -184,6 +184,7 @@ class MUIShapeHelper : IMUIShapeLayout {
                         outline.setRoundRect(left, top, right, bottom, radius)
                         return
                     }
+                    outline.alpha = shadowAlpha
                     if (radius <= 0) {
                         outline.setRect(left, top, right, bottom)
                     } else {

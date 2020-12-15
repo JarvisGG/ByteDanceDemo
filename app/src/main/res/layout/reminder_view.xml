@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/v_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#25292E"
+        android:alpha="0.6" />
+
+    <bizuikit.components.layout.MUILayout
+        android:id="@+id/mui_content"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:gravity="center_horizontal"
+        app:mui_shadowAlpha="0"
+        app:mui_radius="12dp">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/ic_logo" />
+
+        <TextView
+            android:layout_width="144dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            android:textColor="#F24141"
+            android:text="即将超时提醒"/>
+
+        <TextView
+            android:layout_width="271dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:text="您的店铺有人咨询，还有30秒就超时啦，快去接待"
+            android:textSize="15sp"
+            android:textColor="#5E6166" />
+
+
+        <bizuikit.components.button.MUIButton
+            android:id="@+id/mui_server"
+            style="@style/MUIButton.Large.Stress"
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="48dp"
+            app:mui_backgroundColor="@color/mui_button_alert_notice_stress_selector"
+            app:mui_borderColor="#F24141"
+            android:text="立即接待" />
+
+    </bizuikit.components.layout.MUILayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

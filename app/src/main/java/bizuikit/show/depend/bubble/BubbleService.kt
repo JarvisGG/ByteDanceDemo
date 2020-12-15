@@ -40,13 +40,6 @@ open class BubbleService : Service() {
                 badge?.showCount(10)
                 badge?.z = 20f
                 icon = view.findViewById(R.id.ml_bubble_icon)
-                val parent = icon?.parent
-                if (parent != null && parent is ViewGroup) {
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                        parent.clipToOutline = false
-                    }
-                    parent.clipChildren = false
-                }
             }
 
             override fun onAttachToWindow(v: View) {

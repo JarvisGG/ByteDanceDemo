@@ -21,10 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name="bizuikit.DetailActivity" />
-        <activity android:name="bizuikit.utils.DemoActivity"
-            android:excludeFromRecents="true"/>
+        <activity android:name="bizuikit.utils.DemoActivity"/>
 
         <service android:name="bizuikit.show.depend.bubble.BubbleService" />
+        <service android:name="bizuikit.utils.DemoService" />
     </application>
 
 </manifest>
